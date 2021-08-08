@@ -18,7 +18,9 @@
 
 ### 作业1
 
-Hello.java代码
+Hello.java代码如下：
+
+> https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/jvm/Hello.java
 
 ```java
 public class Hello {
@@ -40,7 +42,7 @@ public class Hello {
 }
 ```
 
-字节码分析
+字节码分析如下：
 
 ```java
 Compiled from "Hello.java"
@@ -98,15 +100,28 @@ public class com.piercebn.javacource.jvm.Hello {
 
 ### 作业2
 
+自定义 Classloader代码如下：
 
+> https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/jvm/XlassLoader.java
 
 ### 作业3
+
+Xmx、Xms、Xmn、Meta、DirectMemory、Xss 内存参数关系图如下：
+
+<img src="01jvm/images/image-jvm-memory.png" alt="image-jvm-memory" style="zoom:60%;" />
 
 
 
 ### 作业4
 
+检查JVM参数配置
 
+ jstat 
+
+jstack
+
+jmap 
 
 ### 作业5
 
+待后续处理
