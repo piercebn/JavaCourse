@@ -1,3 +1,5 @@
+
+
 # 第一周作业
 
 ## 作业题目
@@ -114,13 +116,215 @@ Xmx、Xms、Xmn、Meta、DirectMemory、Xss 内存参数关系图如下：
 
 ### 作业4
 
-检查JVM参数配置
+检查JVM参数配置及相关堆和栈信息
+
+jinfo
+
+> jinfo 24963
+
+```java
+java.runtime.name = Java(TM) SE Runtime Environment
+java.vm.version = 25.281-b09
+sun.boot.library.path = /usr/java/jdk1.8.0_281-amd64/jre/lib/amd64
+java.protocol.handler.pkgs = org.springframework.boot.loader
+java.vendor.url = http://java.oracle.com/
+java.vm.vendor = Oracle Corporation
+path.separator = :
+file.encoding.pkg = sun.io
+java.vm.name = Java HotSpot(TM) 64-Bit Server VM
+...
+VM Flags:
+Non-default VM flags: -XX:CICompilerCount=4 -XX:InitialHeapSize=2147483648 -XX:MaxHeapSize=2147483648 -XX:MaxNewSize=536870912 -XX:MinHeapDeltaBytes=524288 -XX:NewSize=536870912 -XX:OldSize=1610612736 -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseParallelGC
+Command line:  -Xms2048m -Xmx2048m -XX:MaxNewSize=512m -XX:MaxPermSize=1024m  
+// 使用了已废弃的参数-XX:MaxPermSize
+```
 
  jstat 
 
-jstack
+> jstat -gcutil -t 24963 1000 10
+
+```java
+Timestamp         S0     S1     E      O      M     CCS    YGC     YGCT    FGC    FGCT     GCT
+        15116.0   4.26   0.00  14.49   3.90  94.48  92.16     22    0.379     3    0.302    0.681
+        15117.0   4.26   0.00  14.49   3.90  94.48  92.16     22    0.379     3    0.302    0.681
+        15118.0   4.26   0.00  14.50   3.90  94.48  92.16     22    0.379     3    0.302    0.681
+        15119.0   4.26   0.00  14.50   3.90  94.48  92.16     22    0.379     3    0.302    0.681
+        15120.0   4.26   0.00  14.50   3.90  94.48  92.16     22    0.379     3    0.302    0.681
+        15121.0   4.26   0.00  14.72   3.90  94.48  92.16     22    0.379     3    0.302    0.681
+        15122.0   4.26   0.00  14.72   3.90  94.48  92.16     22    0.379     3    0.302    0.681
+        15123.0   4.26   0.00  14.72   3.90  94.48  92.16     22    0.379     3    0.302    0.681
+        15124.0   4.26   0.00  14.72   3.90  94.48  92.16     22    0.379     3    0.302    0.681
+        15125.0   4.26   0.00  14.72   3.90  94.48  92.16     22    0.379     3    0.302    0.681
+// 元数据M区和CSS区数据占比偏高
+// YGCT总时间0.379s，平均每次17ms
+// FGCT总时间0.302s，平均每次100ms  
+```
+
+> jstat -gc -t 24963 1000 10
+
+```
+Timestamp        S0C    S1C    S0U    S1U      EC       EU        OC         OU       MC     MU    CCSC   CCSU   YGC     YGCT    FGC    FGCT     GCT
+        15169.6 35328.0 34304.0 1504.4  0.0   454656.0 76401.8  1572864.0   61284.2   80792.0 76329.9 9624.0 8869.7     22    0.379   3      0.3020.681
+        15170.6 35328.0 34304.0 1504.4  0.0   454656.0 78263.5  1572864.0   61284.2   80792.0 76329.9 9624.0 8869.7     22    0.379   3      0.3020.681
+        15171.6 35328.0 34304.0 1504.4  0.0   454656.0 78263.5  1572864.0   61284.2   80792.0 76329.9 9624.0 8869.7     22    0.379   3      0.3020.681
+        15172.6 35328.0 34304.0 1504.4  0.0   454656.0 78263.5  1572864.0   61284.2   80792.0 76329.9 9624.0 8869.7     22    0.379   3      0.3020.681
+        15173.6 35328.0 34304.0 1504.4  0.0   454656.0 78263.5  1572864.0   61284.2   80792.0 76329.9 9624.0 8869.7     22    0.379   3      0.3020.681
+        15174.6 35328.0 34304.0 1504.4  0.0   454656.0 78263.5  1572864.0   61284.2   80792.0 76329.9 9624.0 8869.7     22    0.379   3      0.3020.681
+        15175.6 35328.0 34304.0 1504.4  0.0   454656.0 79081.1  1572864.0   61284.2   80792.0 76329.9 9624.0 8869.7     22    0.379   3      0.3020.681
+        15176.6 35328.0 34304.0 1504.4  0.0   454656.0 79081.1  1572864.0   61284.2   80792.0 76329.9 9624.0 8869.7     22    0.379   3      0.3020.681
+        15177.6 35328.0 34304.0 1504.4  0.0   454656.0 79081.1  1572864.0   61284.2   80792.0 76329.9 9624.0 8869.7     22    0.379   3      0.3020.681
+        15178.6 35328.0 34304.0 1504.4  0.0   454656.0 79081.1  1572864.0   61284.2   80792.0 76329.9 9624.0 8869.7     22    0.379   3      0.3020.681
+```
 
 jmap 
+
+> jmap -heap 24963
+
+```
+JVM version is 25.281-b09
+
+using thread-local object allocation.
+Parallel GC with 8 thread(s)
+
+Heap Configuration:
+   MinHeapFreeRatio         = 0
+   MaxHeapFreeRatio         = 100
+   MaxHeapSize              = 2147483648 (2048.0MB)
+   NewSize                  = 536870912 (512.0MB)
+   MaxNewSize               = 536870912 (512.0MB)
+   OldSize                  = 1610612736 (1536.0MB)
+   NewRatio                 = 2
+   SurvivorRatio            = 8
+   MetaspaceSize            = 21807104 (20.796875MB)
+   CompressedClassSpaceSize = 1073741824 (1024.0MB)
+   MaxMetaspaceSize         = 17592186044415 MB
+   G1HeapRegionSize         = 0 (0.0MB)
+
+Heap Usage:
+PS Young Generation
+Eden Space:
+   capacity = 465567744 (444.0MB)
+   used     = 88400480 (84.30526733398438MB)
+   free     = 377167264 (359.6947326660156MB)
+   18.987672822969454% used
+From Space:
+   capacity = 36175872 (34.5MB)
+   used     = 1540512 (1.469146728515625MB)
+   free     = 34635360 (33.030853271484375MB)
+   4.258396314538044% used
+To Space:
+   capacity = 35127296 (33.5MB)
+   used     = 0 (0.0MB)
+   free     = 35127296 (33.5MB)
+   0.0% used
+PS Old Generation
+   capacity = 1610612736 (1536.0MB)
+   used     = 62755008 (59.84783935546875MB)
+   free     = 1547857728 (1476.1521606445312MB)
+   3.89634370803833% used
+
+37069 interned Strings occupying 4166944 bytes.
+```
+
+> jmap -histo 24963
+
+```
+num     #instances         #bytes  class name
+----------------------------------------------
+   1:        281794       76510064  [C
+   2:         16757       21694320  [B
+   3:         15737       18886344  [I
+   4:        254828        6115872  java.lang.String
+   5:         71975        4621392  [Ljava.lang.Object;
+   6:         46497        4091736  java.lang.reflect.Method
+   7:         69015        3864840  java.util.stream.ReferencePipeline$Head
+   8:         72549        2901960  java.util.LinkedHashMap$Entry
+   9:         41885        2533736  [Ljava.util.HashMap$Node;
+  10:         70569        2258208  java.util.concurrent.ConcurrentHashMap$Node
+  11:         50944        1630208  java.util.HashMap$Node
+  12:         14486        1609464  java.lang.Class
+  13:         28661        1605016  java.util.LinkedHashMap
+  14:         33063        1322520  io.prometheus.client.Collector$MetricFamilySamples$Sample
+  15:         44249        1061976  java.util.ArrayList
+  16:         49650        1055424  [Ljava.lang.Class;
+  17:         41921        1006104  io.micrometer.prometheus.MicrometerCollector$Family
+  18:         30430         973760  java.lang.ref.WeakReference
+  19:         11466         825552  java.lang.reflect.Field
+  20:         17099         820752  io.micrometer.core.instrument.distribution.HistogramSnapshot
+  21:          9372         751040  [S
+  22:         26932         729072  [Ljava.lang.String;
+  23:         11331         725184  java.util.stream.ReferencePipeline$3
+  24:         14992         719616  java.util.HashMap
+  25:           389         661904  [Ljava.util.concurrent.ConcurrentHashMap$Node;
+  26:         14316         572640  java.lang.ref.SoftReference
+  27:         16470         566544  [Ljava.lang.reflect.Method;
+  28:         17408         557056  java.util.stream.Collectors$CollectorImpl
+  29:         17408         557056  java.util.stream.ReduceOps$3
+  30:         17408         557056  java.util.stream.ReduceOps$3ReducingSink
+```
+
+jstack
+
+> jstack -l 24963
+
+```
+Full thread dump Java HotSpot(TM) 64-Bit Server VM (25.281-b09 mixed mode):
+
+"Attach Listener" #160 daemon prio=9 os_prio=0 tid=0x00007f0ee0001000 nid=0x11947 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+   Locked ownable synchronizers:
+        - None
+
+"Async-pool-4" #68 prio=5 os_prio=0 tid=0x00007f0e482d5000 nid=0x9164 waiting on condition [0x00007f0e65bce000]
+   java.lang.Thread.State: WAITING (parking)
+        at sun.misc.Unsafe.park(Native Method)
+        - parking to wait for  <0x00000000828934d8> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+        at java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+        at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+        at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+        at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1074)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+        at java.lang.Thread.run(Thread.java:748)
+
+   Locked ownable synchronizers:
+        - None
+...
+
+"Reference Handler" #2 daemon prio=10 os_prio=0 tid=0x00007f0f301d2000 nid=0x618f in Object.wait() [0x00007f0efbdfc000]
+   java.lang.Thread.State: WAITING (on object monitor)
+        at java.lang.Object.wait(Native Method)
+        at java.lang.Object.wait(Object.java:502)
+        at java.lang.ref.Reference.tryHandlePending(Reference.java:191)
+        - locked <0x0000000080138448> (a java.lang.ref.Reference$Lock)
+        at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:153)
+
+   Locked ownable synchronizers:
+        - None
+
+"VM Thread" os_prio=0 tid=0x00007f0f301c8000 nid=0x618e runnable
+
+"GC task thread#0 (ParallelGC)" os_prio=0 tid=0x00007f0f3001e800 nid=0x6186 runnable
+
+"GC task thread#1 (ParallelGC)" os_prio=0 tid=0x00007f0f30020800 nid=0x6187 runnable
+
+"GC task thread#2 (ParallelGC)" os_prio=0 tid=0x00007f0f30022800 nid=0x6188 runnable
+
+"GC task thread#3 (ParallelGC)" os_prio=0 tid=0x00007f0f30024000 nid=0x6189 runnable
+
+"GC task thread#4 (ParallelGC)" os_prio=0 tid=0x00007f0f30026000 nid=0x618a runnable
+
+"GC task thread#5 (ParallelGC)" os_prio=0 tid=0x00007f0f30028000 nid=0x618b runnable
+
+"GC task thread#6 (ParallelGC)" os_prio=0 tid=0x00007f0f30029800 nid=0x618c runnable
+
+"GC task thread#7 (ParallelGC)" os_prio=0 tid=0x00007f0f3002b800 nid=0x618d runnable
+
+"VM Periodic Task Thread" os_prio=0 tid=0x00007f0f30220000 nid=0x6197 waiting on condition
+
+JNI global references: 1563
+```
 
 ### 作业5
 
