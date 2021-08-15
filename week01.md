@@ -328,4 +328,159 @@ JNI global references: 1563
 
 ### 作业5
 
-待后续处理
+用于进行启动参数测试程序代码如下，一分钟内随机分配内存：
+
+> https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/jvm/GCLogAnalysis.java
+
+程序编译和执行目录准备
+
+> 01jvm/java-cource/src/main/java/com/piercebn/javacource/jvm 
+>
+> javac -g GCLogAnalysis.java
+>
+> cd 01jvm/java-cource/src/main/java
+
+启动命令及参数：
+
+使用G1 GC启动，堆内存1g，简洁日志输出
+
+> java -XX:+PrintGC -XX:+PrintGCDateStamps -Xmx1g -Xms1g -XX:+UseG1GC com.piercebn.javacource.jvm.GCLogAnalysis
+
+```
+正在执行...
+2021-08-15T16:33:42.346-0800: [GC pause (G1 Evacuation Pause) (young) 67M->20M(1024M), 0.0076662 secs]
+2021-08-15T16:33:42.365-0800: [GC pause (G1 Evacuation Pause) (young) 72M->33M(1024M), 0.0043928 secs]
+2021-08-15T16:33:42.378-0800: [GC pause (G1 Evacuation Pause) (young) 86M->50M(1024M), 0.0073582 secs]
+2021-08-15T16:33:42.423-0800: [GC pause (G1 Evacuation Pause) (young) 154M->87M(1024M), 0.0131813 secs]
+2021-08-15T16:33:42.451-0800: [GC pause (G1 Evacuation Pause) (young) 176M->114M(1024M), 0.0086563 secs]
+2021-08-15T16:33:42.487-0800: [GC pause (G1 Evacuation Pause) (young) 234M->153M(1024M), 0.0129940 secs]
+2021-08-15T16:33:42.530-0800: [GC pause (G1 Evacuation Pause) (young) 298M->191M(1024M), 0.0158287 secs]
+2021-08-15T16:33:42.584-0800: [GC pause (G1 Evacuation Pause) (young) 368M->240M(1024M), 0.0211340 secs]
+2021-08-15T16:33:42.651-0800: [GC pause (G1 Evacuation Pause) (young) 462M->308M(1024M), 0.0226642 secs]
+2021-08-15T16:33:42.789-0800: [GC pause (G1 Humongous Allocation) (young) (initial-mark) 699M->399M(1024M), 0.0379839 secs]
+2021-08-15T16:33:42.827-0800: [GC concurrent-root-region-scan-start]
+2021-08-15T16:33:42.827-0800: [GC concurrent-root-region-scan-end, 0.0001682 secs]
+2021-08-15T16:33:42.827-0800: [GC concurrent-mark-start]
+2021-08-15T16:33:42.829-0800: [GC concurrent-mark-end, 0.0021414 secs]
+2021-08-15T16:33:42.829-0800: [GC remark, 0.0008898 secs]
+2021-08-15T16:33:42.830-0800: [GC cleanup 417M->407M(1024M), 0.0005415 secs]
+2021-08-15T16:33:42.831-0800: [GC concurrent-cleanup-start]
+2021-08-15T16:33:42.831-0800: [GC concurrent-cleanup-end, 0.0000211 secs]
+2021-08-15T16:33:42.866-0800: [GC pause (G1 Evacuation Pause) (young) 658M->453M(1024M), 0.0180357 secs]
+2021-08-15T16:33:42.887-0800: [GC pause (G1 Evacuation Pause) (mixed) 473M->401M(1024M), 0.0051159 secs]
+2021-08-15T16:33:42.896-0800: [GC pause (G1 Humongous Allocation) (young) (initial-mark) 431M->412M(1024M), 0.0015316 secs]
+2021-08-15T16:33:42.897-0800: [GC concurrent-root-region-scan-start]
+2021-08-15T16:33:42.898-0800: [GC concurrent-root-region-scan-end, 0.0000951 secs]
+2021-08-15T16:33:42.898-0800: [GC concurrent-mark-start]
+2021-08-15T16:33:42.899-0800: [GC concurrent-mark-end, 0.0009781 secs]
+2021-08-15T16:33:42.899-0800: [GC remark, 0.0010024 secs]
+2021-08-15T16:33:42.900-0800: [GC cleanup 421M->417M(1024M), 0.0007243 secs]
+2021-08-15T16:33:42.901-0800: [GC concurrent-cleanup-start]
+2021-08-15T16:33:42.901-0800: [GC concurrent-cleanup-end, 0.0000162 secs]
+2021-08-15T16:33:42.977-0800: [GC pause (G1 Evacuation Pause) (young)-- 828M->556M(1024M), 0.0141780 secs]
+2021-08-15T16:33:42.993-0800: [GC pause (G1 Evacuation Pause) (mixed) 566M->508M(1024M), 0.0073161 secs]
+2021-08-15T16:33:43.001-0800: [GC pause (G1 Humongous Allocation) (young) (initial-mark) 511M->509M(1024M), 0.0021129 secs]
+2021-08-15T16:33:43.003-0800: [GC concurrent-root-region-scan-start]
+2021-08-15T16:33:43.003-0800: [GC concurrent-root-region-scan-end, 0.0001167 secs]
+2021-08-15T16:33:43.003-0800: [GC concurrent-mark-start]
+2021-08-15T16:33:43.005-0800: [GC concurrent-mark-end, 0.0012698 secs]
+2021-08-15T16:33:43.005-0800: [GC remark, 0.0020260 secs]
+2021-08-15T16:33:43.007-0800: [GC cleanup 519M->511M(1024M), 0.0008847 secs]
+2021-08-15T16:33:43.008-0800: [GC concurrent-cleanup-start]
+2021-08-15T16:33:43.008-0800: [GC concurrent-cleanup-end, 0.0000298 secs]
+2021-08-15T16:33:43.064-0800: [GC pause (G1 Evacuation Pause) (young) 839M->573M(1024M), 0.0080219 secs]
+2021-08-15T16:33:43.075-0800: [GC pause (G1 Evacuation Pause) (mixed) 592M->489M(1024M), 0.0055103 secs]
+2021-08-15T16:33:43.089-0800: [GC pause (G1 Evacuation Pause) (mixed) 540M->463M(1024M), 0.0037312 secs]
+2021-08-15T16:33:43.093-0800: [GC pause (G1 Humongous Allocation) (young) (initial-mark) 463M->463M(1024M), 0.0018491 secs]
+2021-08-15T16:33:43.095-0800: [GC concurrent-root-region-scan-start]
+2021-08-15T16:33:43.095-0800: [GC concurrent-root-region-scan-end, 0.0000972 secs]
+2021-08-15T16:33:43.095-0800: [GC concurrent-mark-start]
+2021-08-15T16:33:43.097-0800: [GC concurrent-mark-end, 0.0011452 secs]
+2021-08-15T16:33:43.097-0800: [GC remark, 0.0020591 secs]
+2021-08-15T16:33:43.099-0800: [GC cleanup 470M->465M(1024M), 0.0009278 secs]
+2021-08-15T16:33:43.100-0800: [GC concurrent-cleanup-start]
+2021-08-15T16:33:43.100-0800: [GC concurrent-cleanup-end, 0.0000281 secs]
+2021-08-15T16:33:43.159-0800: [GC pause (G1 Evacuation Pause) (young)-- 848M->619M(1024M), 0.0086153 secs]
+2021-08-15T16:33:43.169-0800: [GC pause (G1 Evacuation Pause) (mixed) 632M->555M(1024M), 0.0060564 secs]
+2021-08-15T16:33:43.176-0800: [GC pause (G1 Humongous Allocation) (young) (initial-mark) 558M->556M(1024M), 0.0021576 secs]
+2021-08-15T16:33:43.178-0800: [GC concurrent-root-region-scan-start]
+2021-08-15T16:33:43.178-0800: [GC concurrent-root-region-scan-end, 0.0001562 secs]
+2021-08-15T16:33:43.178-0800: [GC concurrent-mark-start]
+2021-08-15T16:33:43.179-0800: [GC concurrent-mark-end, 0.0010520 secs]
+2021-08-15T16:33:43.179-0800: [GC remark, 0.0019018 secs]
+2021-08-15T16:33:43.181-0800: [GC cleanup 563M->557M(1024M), 0.0006927 secs]
+2021-08-15T16:33:43.182-0800: [GC concurrent-cleanup-start]
+2021-08-15T16:33:43.182-0800: [GC concurrent-cleanup-end, 0.0000158 secs]
+2021-08-15T16:33:43.228-0800: [GC pause (G1 Evacuation Pause) (young)-- 855M->653M(1024M), 0.0063282 secs]
+2021-08-15T16:33:43.237-0800: [GC pause (G1 Evacuation Pause) (mixed) 676M->568M(1024M), 0.0044403 secs]
+2021-08-15T16:33:43.248-0800: [GC pause (G1 Evacuation Pause) (mixed) 623M->524M(1024M), 0.0047568 secs]
+2021-08-15T16:33:43.253-0800: [GC pause (G1 Humongous Allocation) (young) (initial-mark) 525M->523M(1024M), 0.0016238 secs]
+2021-08-15T16:33:43.255-0800: [GC concurrent-root-region-scan-start]
+2021-08-15T16:33:43.255-0800: [GC concurrent-root-region-scan-end, 0.0000812 secs]
+2021-08-15T16:33:43.255-0800: [GC concurrent-mark-start]
+2021-08-15T16:33:43.256-0800: [GC concurrent-mark-end, 0.0010587 secs]
+2021-08-15T16:33:43.256-0800: [GC remark, 0.0018558 secs]
+2021-08-15T16:33:43.258-0800: [GC cleanup 533M->526M(1024M), 0.0006594 secs]
+2021-08-15T16:33:43.259-0800: [GC concurrent-cleanup-start]
+2021-08-15T16:33:43.259-0800: [GC concurrent-cleanup-end, 0.0000188 secs]
+执行结束!共生成对象次数:12958
+```
+
+使用G1 GC启动，堆内存4g，只对young区做了垃圾回收，简洁日志输出
+
+> java -XX:+PrintGC -XX:+PrintGCDateStamps -Xmx4g -Xms4g -XX:+UseG1GC com.piercebn.javacource.jvm.GCLogAnalysis
+
+```
+正在执行...
+2021-08-15T16:52:10.420-0800: [GC pause (G1 Evacuation Pause) (young) 204M->67M(4096M), 0.0277622 secs]
+2021-08-15T16:52:10.479-0800: [GC pause (G1 Evacuation Pause) (young) 245M->123M(4096M), 0.0214723 secs]
+2021-08-15T16:52:10.525-0800: [GC pause (G1 Evacuation Pause) (young) 301M->184M(4096M), 0.0255665 secs]
+2021-08-15T16:52:10.574-0800: [GC pause (G1 Evacuation Pause) (young) 362M->235M(4096M), 0.0216321 secs]
+2021-08-15T16:52:10.619-0800: [GC pause (G1 Evacuation Pause) (young) 413M->289M(4096M), 0.0243965 secs]
+2021-08-15T16:52:10.665-0800: [GC pause (G1 Evacuation Pause) (young) 467M->340M(4096M), 0.0221442 secs]
+2021-08-15T16:52:10.710-0800: [GC pause (G1 Evacuation Pause) (young) 518M->395M(4096M), 0.0224918 secs]
+2021-08-15T16:52:10.757-0800: [GC pause (G1 Evacuation Pause) (young) 597M->461M(4096M), 0.0759884 secs]
+2021-08-15T16:52:10.859-0800: [GC pause (G1 Evacuation Pause) (young) 687M->525M(4096M), 0.0387597 secs]
+执行结束!共生成对象次数:9260
+```
+
+使用G1 GC启动，堆内存256m，触发Full GC退化，最终出现OutOfMemoryError堆内存溢出，即256m堆内存放不下创建的那么多对象，简洁日志输出
+
+> java -XX:+PrintGC -XX:+PrintGCDateStamps -Xmx256m -Xms256m -XX:+UseG1GC com.piercebn.javacource.jvm.GCLogAnalysis
+
+```
+...
+2021-08-15T17:30:03.807-0800: [GC pause (G1 Evacuation Pause) (young) 211M->202M(256M), 0.0008355 secs]
+2021-08-15T17:30:03.809-0800: [GC pause (G1 Evacuation Pause) (mixed)-- 212M->208M(256M), 0.0012882 secs]
+2021-08-15T17:30:03.811-0800: [GC pause (G1 Humongous Allocation) (young) (initial-mark) 209M->209M(256M), 0.0006396 secs]
+2021-08-15T17:30:03.811-0800: [GC concurrent-root-region-scan-start]
+2021-08-15T17:30:03.811-0800: [GC concurrent-root-region-scan-end, 0.0000300 secs]
+2021-08-15T17:30:03.811-0800: [GC concurrent-mark-start]
+2021-08-15T17:30:03.812-0800: [GC concurrent-mark-end, 0.0006069 secs]
+2021-08-15T17:30:03.812-0800: [GC remark, 0.0008070 secs]
+2021-08-15T17:30:03.813-0800: [GC cleanup 214M->214M(256M), 0.0003566 secs]
+2021-08-15T17:30:03.814-0800: [GC pause (G1 Evacuation Pause) (young)-- 221M->219M(256M), 0.0010316 secs]
+2021-08-15T17:30:03.816-0800: [GC pause (G1 Humongous Allocation) (mixed)-- 224M->224M(256M), 0.0012766 secs]
+2021-08-15T17:30:03.817-0800: [GC pause (G1 Evacuation Pause) (young) (initial-mark) 224M->224M(256M), 0.0011527 secs]
+2021-08-15T17:30:03.819-0800: [GC concurrent-root-region-scan-start]
+2021-08-15T17:30:03.819-0800: [GC concurrent-root-region-scan-end, 0.0000087 secs]
+2021-08-15T17:30:03.819-0800: [GC concurrent-mark-start]
+2021-08-15T17:30:03.819-0800: [GC pause (G1 Evacuation Pause) (young) 224M->224M(256M), 0.0011613 secs]
+2021-08-15T17:30:03.820-0800: [Full GC (Allocation Failure)  224M->184M(256M), 0.0189364 secs]
+2021-08-15T17:30:03.839-0800: [GC concurrent-mark-abort]
+...
+2021-08-15T17:30:04.028-0800: [Full GC (Allocation Failure)  203M->203M(256M), 0.0023168 secs]
+2021-08-15T17:30:04.030-0800: [Full GC (Allocation Failure)  203M->203M(256M), 0.0026705 secs]
+2021-08-15T17:30:04.033-0800: [GC concurrent-mark-abort]
+2021-08-15T17:30:04.033-0800: [GC pause (G1 Evacuation Pause) (young) 203M->203M(256M), 0.0006747 secs]
+2021-08-15T17:30:04.034-0800: [GC pause (G1 Evacuation Pause) (young) (initial-mark) 203M->203M(256M), 0.0007135 secs]
+2021-08-15T17:30:04.035-0800: [GC concurrent-root-region-scan-start]
+2021-08-15T17:30:04.035-0800: [GC concurrent-root-region-scan-end, 0.0000114 secs]
+2021-08-15T17:30:04.035-0800: [GC concurrent-mark-start]
+2021-08-15T17:30:04.035-0800: [Full GC (Allocation Failure)  203M->272K(256M), 0.0022341 secs]
+2021-08-15T17:30:04.037-0800: [GC concurrent-mark-abort]
+Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+	at com.piercebn.javacource.jvm.GCLogAnalysis.generateGarbage(GCLogAnalysis.java:47)
+	at com.piercebn.javacource.jvm.GCLogAnalysis.main(GCLogAnalysis.java:27)
+```
+
