@@ -9,6 +9,15 @@ import io.netty.handler.codec.http.FullHttpRequest;
 import io.netty.handler.codec.http.FullHttpResponse;
 import io.netty.handler.codec.http.HttpUtil;
 import io.netty.util.ReferenceCountUtil;
+import org.apache.http.Header;
+import org.apache.http.HttpEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
+
+import java.io.IOException;
 
 import static io.netty.handler.codec.http.HttpHeaderNames.CONNECTION;
 import static io.netty.handler.codec.http.HttpHeaderValues.KEEP_ALIVE;
@@ -30,12 +39,13 @@ public class HttpHandler extends ChannelInboundHandlerAdapter {
             FullHttpRequest fullRequest = (FullHttpRequest) msg;
             String uri = fullRequest.uri();
             //logger.info("接收到的请求url为{}", uri);
-            if (uri.contains("/test")) {
+            if (uri.contains("/doGet")) {
+                handlerDoGet(fullRequest, ctx, "http://localhost:8801/");
+            } else if (uri.contains("/test")) {
                 handlerTest(fullRequest, ctx, "hello,kimmking");
             } else {
                 handlerTest(fullRequest, ctx, "hello,others");
             }
-
         } catch(Exception e) {
             e.printStackTrace();
         } finally {
@@ -70,6 +80,49 @@ public class HttpHandler extends ChannelInboundHandlerAdapter {
                 ctx.flush();
             }
         }
+    }
+
+    private void handlerDoGet(FullHttpRequest fullRequest, ChannelHandlerContext ctx, String uri) {
+        FullHttpResponse response = null;
+        try {
+            //使用httpclient请求另一个url的响应数据
+            response = doGet(uri);
+        } catch (Exception e) {
+            System.out.println("处理出错:"+e.getMessage());
+            response = new DefaultFullHttpResponse(HTTP_1_1, NO_CONTENT);
+        } finally {
+            if (fullRequest != null) {
+                if (!HttpUtil.isKeepAlive(fullRequest)) {
+                    ctx.write(response).addListener(ChannelFutureListener.CLOSE);
+                } else {
+                    response.headers().set(CONNECTION, KEEP_ALIVE);
+                    ctx.write(response);
+                }
+                ctx.flush();
+            }
+        }
+    }
+
+    private FullHttpResponse doGet(String uri) throws IOException {
+        FullHttpResponse resultResponse = null;
+        CloseableHttpClient httpclient = HttpClients.createDefault();
+        HttpGet httpGet = new HttpGet(uri);
+        CloseableHttpResponse response = httpclient.execute(httpGet);
+        try {
+            System.out.println("Status: "+response.getStatusLine());
+            HttpEntity entity = response.getEntity();
+            if (entity != null) {
+                String result = EntityUtils.toString(entity);
+                System.out.println("Result: " + result);
+                resultResponse = new DefaultFullHttpResponse(HTTP_1_1, OK, Unpooled.wrappedBuffer(result.getBytes("UTF-8")));
+                for (Header header:response.getAllHeaders()) {
+                    resultResponse.headers().set(header.getName(), header.getValue());
+                }
+            }
+        } finally {
+            response.close();
+        }
+        return resultResponse;
     }
 
     @Override
