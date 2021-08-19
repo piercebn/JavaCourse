@@ -39,7 +39,9 @@ public class HttpHandler extends ChannelInboundHandlerAdapter {
             FullHttpRequest fullRequest = (FullHttpRequest) msg;
             String uri = fullRequest.uri();
             //logger.info("接收到的请求url为{}", uri);
-            if (uri.contains("/doGet")) {
+            if (uri.contains("/doGetNetty")) {
+                handlerDoGetNetty(fullRequest, ctx, "localhost",8801,"/");
+            } else if (uri.contains("/doGet")) {
                 handlerDoGet(fullRequest, ctx, "http://localhost:8801/");
             } else if (uri.contains("/test")) {
                 handlerTest(fullRequest, ctx, "hello,kimmking");
@@ -87,6 +89,27 @@ public class HttpHandler extends ChannelInboundHandlerAdapter {
         try {
             //使用httpclient请求另一个url的响应数据
             response = doGet(uri);
+        } catch (Exception e) {
+            System.out.println("处理出错:"+e.getMessage());
+            response = new DefaultFullHttpResponse(HTTP_1_1, NO_CONTENT);
+        } finally {
+            if (fullRequest != null) {
+                if (!HttpUtil.isKeepAlive(fullRequest)) {
+                    ctx.write(response).addListener(ChannelFutureListener.CLOSE);
+                } else {
+                    response.headers().set(CONNECTION, KEEP_ALIVE);
+                    ctx.write(response);
+                }
+                ctx.flush();
+            }
+        }
+    }
+
+    private void handlerDoGetNetty(FullHttpRequest fullRequest, ChannelHandlerContext ctx, String host, int port, String path) {
+        FullHttpResponse response = null;
+        try {
+            //使用httpclient请求另一个url的响应数据
+            response = NettyHttpClient.start(host, port, path);
         } catch (Exception e) {
             System.out.println("处理出错:"+e.getMessage());
             response = new DefaultFullHttpResponse(HTTP_1_1, NO_CONTENT);
