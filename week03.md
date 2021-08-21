@@ -250,6 +250,18 @@ public class HttpClientHandler extends ChannelInboundHandlerAdapter {
 
 完善网关的例子，实现过滤器，向header中追加信息
 
+> 先运行HttpServer01（http://localhost:8801/ ）
+>
+> https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/nio/HttpServer01.java
+>
+> 先运行HttpServer02（http://localhost:8802/ ）
+>
+> https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/nio/HttpServer02.java
+>
+> 再运行NettyServerGateway（http://localhost:8888/）
+>
+> https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/nio/gateway/NettyServerGateway.java
+
 > 实现request filter和response filter，修改header信息
 >
 > https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/nio/gateway/filter/HeaderHttpRequestFilter.java
