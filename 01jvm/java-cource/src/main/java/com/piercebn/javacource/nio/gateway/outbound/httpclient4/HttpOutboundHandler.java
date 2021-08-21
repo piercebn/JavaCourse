@@ -68,11 +68,15 @@ public class HttpOutboundHandler {
         return backend.endsWith("/")?backend.substring(0,backend.length()-1):backend;
     }
 
-    public void handle(final FullHttpRequest fullRequest, final ChannelHandlerContext ctx, HttpRequestFilter filter) {
+    public void handle(final FullHttpRequest fullRequest, final ChannelHandlerContext ctx, HttpRequestFilter filter) throws Exception {
         String backendUrl = router.route(this.backendUrls);
         final String url = backendUrl + fullRequest.uri();
-        filter.filter(fullRequest, ctx);
-        proxyService.submit(()->fetchGet(fullRequest, ctx, url));
+        if (filter.filter(fullRequest, ctx)){
+            proxyService.submit(()->fetchGet(fullRequest, ctx, url));
+        } else {
+            handleResponse(fullRequest, ctx, null);
+        }
+
     }
 
     private void fetchGet(final FullHttpRequest inbound, final ChannelHandlerContext ctx, final String url) {
@@ -109,28 +113,24 @@ public class HttpOutboundHandler {
     private void handleResponse(final FullHttpRequest fullRequest, final ChannelHandlerContext ctx, final HttpResponse endpointResponse) throws Exception {
         FullHttpResponse response = null;
         try {
-//            String value = "hello,kimmking";
-//            response = new DefaultFullHttpResponse(HTTP_1_1, OK, Unpooled.wrappedBuffer(value.getBytes("UTF-8")));
-//            response.headers().set("Content-Type", "application/json");
-//            response.headers().setInt("Content-Length", response.content().readableBytes());
-
-
-            byte[] body = EntityUtils.toByteArray(endpointResponse.getEntity());
+            if(endpointResponse == null) {
+                String value = "hello,filter reject without hello";
+                response = new DefaultFullHttpResponse(HTTP_1_1, OK, Unpooled.wrappedBuffer(value.getBytes("UTF-8")));
+                response.headers().set("Content-Type", "application/json");
+                response.headers().setInt("Content-Length", response.content().readableBytes());
+            } else {
+                byte[] body = EntityUtils.toByteArray(endpointResponse.getEntity());
 //            System.out.println(new String(body));
 //            System.out.println(body.length);
-
-            response = new DefaultFullHttpResponse(HTTP_1_1, OK, Unpooled.wrappedBuffer(body));
-
-            response.headers().set("Content-Type", "application/json");
-            response.headers().setInt("Content-Length", Integer.parseInt(endpointResponse.getFirstHeader("Content-Length").getValue()));
-
-            filter.filter(response);
-
+                response = new DefaultFullHttpResponse(HTTP_1_1, OK, Unpooled.wrappedBuffer(body));
+                response.headers().set("Content-Type", "application/json");
+                response.headers().setInt("Content-Length", Integer.parseInt(endpointResponse.getFirstHeader("Content-Length").getValue()));
 //            for (Header e : endpointResponse.getAllHeaders()) {
 //                //response.headers().set(e.getName(),e.getValue());
 //                System.out.println(e.getName() + " => " + e.getValue());
 //            }
-
+            }
+            filter.filter(response);
         } catch (Exception e) {
             e.printStackTrace();
             response = new DefaultFullHttpResponse(HTTP_1_1, NO_CONTENT);

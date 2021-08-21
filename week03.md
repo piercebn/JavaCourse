@@ -258,11 +258,11 @@ public class HttpClientHandler extends ChannelInboundHandlerAdapter {
 >
 > https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/nio/HttpServer02.java
 >
-> 再运行NettyServerGateway（http://localhost:8888/）
+> 再运行NettyServerGateway（http://localhost:8888/ or http://localhost:8888/hello）
 >
 > https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/nio/gateway/NettyServerGateway.java
 
-> 实现request filter和response filter，修改header信息
+> 实现request filter和response filter，修改header信息，并根据url进行请求过滤
 >
 > https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/nio/gateway/filter/HeaderHttpRequestFilter.java
 >
@@ -271,37 +271,57 @@ public class HttpClientHandler extends ChannelInboundHandlerAdapter {
 ```java
 public class HeaderHttpRequestFilter implements HttpRequestFilter {
     @Override
-    public void filter(FullHttpRequest fullRequest, ChannelHandlerContext ctx) {
-        fullRequest.headers().set("mao", "soul");
+    public boolean filter(FullHttpRequest fullRequest, ChannelHandlerContext ctx) {
+        boolean isPass = true;
+        String uri = fullRequest.uri();
+        if (!uri.startsWith("/hello")) {
+            isPass = false;
+        }
+        fullRequest.headers().set("proxy-header", "HeaderHttpRequestFilter");
+        return isPass;
     }
 }
 public class HeaderHttpResponseFilter implements HttpResponseFilter {
     @Override
     public void filter(FullHttpResponse response) {
-        response.headers().set("kk", "java-1-nio");
+        response.headers().set("proxy-header", "HeaderHttpResponseFilter");
     }
 }
 ```
 
-> 通过HttpOutboundHandler实现httpclient请求封装，在请求前调用HttpRequestFilter，向请求头追加信息，在请求返回结果后返回前调用HttpResponseFilter，向响应头追加信息
+> 通过HttpOutboundHandler实现httpclient请求封装，在请求前调用HttpRequestFilter，向请求头追加信息，并根据请求url是否以"/hello"开头确定过滤是否放行，在请求返回结果后返回前调用HttpResponseFilter，向响应头追加信息
 >
 > https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/nio/gateway/outbound/httpclient4/HttpOutboundHandler.java
 
 ```java
-public void handle(final FullHttpRequest fullRequest, final ChannelHandlerContext ctx, HttpRequestFilter filter) {
+public void handle(final FullHttpRequest fullRequest, final ChannelHandlerContext ctx, HttpRequestFilter filter) throws Exception {
   String backendUrl = router.route(this.backendUrls);
   final String url = backendUrl + fullRequest.uri();
   // 请求过滤调用
-  filter.filter(fullRequest, ctx);
-  proxyService.submit(()->fetchGet(fullRequest, ctx, url));
+  if (filter.filter(fullRequest, ctx)){
+    // 通过发起请求
+    proxyService.submit(()->fetchGet(fullRequest, ctx, url));
+  } else {
+    // 不通过
+    handleResponse(fullRequest, ctx, null);
+  }
 }
 private void handleResponse(final FullHttpRequest fullRequest, final ChannelHandlerContext ctx, final HttpResponse endpointResponse) throws Exception {
   FullHttpResponse response = null;
   try {
-    byte[] body = EntityUtils.toByteArray(endpointResponse.getEntity());
-    response = new DefaultFullHttpResponse(HTTP_1_1, OK, Unpooled.wrappedBuffer(body));
-    response.headers().set("Content-Type", "application/json");
-    response.headers().setInt("Content-Length", Integer.parseInt(endpointResponse.getFirstHeader("Content-Length").getValue()));
+    if(endpointResponse == null) {
+      // 不通过响应
+      String value = "hello,filter reject without hello";
+      response = new DefaultFullHttpResponse(HTTP_1_1, OK, Unpooled.wrappedBuffer(value.getBytes("UTF-8")));
+      response.headers().set("Content-Type", "application/json");
+      response.headers().setInt("Content-Length", response.content().readableBytes());
+    } else {
+      // 通过请求后响应
+      byte[] body = EntityUtils.toByteArray(endpointResponse.getEntity());
+      response = new DefaultFullHttpResponse(HTTP_1_1, OK, Unpooled.wrappedBuffer(body));
+      response.headers().set("Content-Type", "application/json");
+      response.headers().setInt("Content-Length", Integer.parseInt(endpointResponse.getFirstHeader("Content-Length").getValue()));
+    }
     // 响应过滤调用
     filter.filter(response);
   } catch (Exception e) {
@@ -345,12 +365,15 @@ public class RandomHttpEndpointRouter implements HttpEndpointRouter {
 > https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/nio/gateway/outbound/httpclient4/HttpOutboundHandler.java
 
 ```java
-public void handle(final FullHttpRequest fullRequest, final ChannelHandlerContext ctx, HttpRequestFilter filter) {
+public void handle(final FullHttpRequest fullRequest, final ChannelHandlerContext ctx, HttpRequestFilter filter) throws Exception {
   // 请求路由选择
   String backendUrl = router.route(this.backendUrls);
   final String url = backendUrl + fullRequest.uri();
-  filter.filter(fullRequest, ctx);
-  proxyService.submit(()->fetchGet(fullRequest, ctx, url));
+  if (filter.filter(fullRequest, ctx)){
+    proxyService.submit(()->fetchGet(fullRequest, ctx, url));
+  } else {
+    handleResponse(fullRequest, ctx, null);
+  }
 }
 ```
 
