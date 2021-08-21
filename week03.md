@@ -248,15 +248,99 @@ public class HttpClientHandler extends ChannelInboundHandlerAdapter {
 
 ### 作业3
 
-完善网关的例子，实现过滤器，解析header中的信息
+完善网关的例子，实现过滤器，向header中追加信息
 
+> 实现request filter和response filter，修改header信息
+>
+> https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/nio/gateway/filter/HeaderHttpRequestFilter.java
+>
+> https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/nio/gateway/filter/HeaderHttpResponseFilter.java
 
+```java
+public class HeaderHttpRequestFilter implements HttpRequestFilter {
+    @Override
+    public void filter(FullHttpRequest fullRequest, ChannelHandlerContext ctx) {
+        fullRequest.headers().set("mao", "soul");
+    }
+}
+public class HeaderHttpResponseFilter implements HttpResponseFilter {
+    @Override
+    public void filter(FullHttpResponse response) {
+        response.headers().set("kk", "java-1-nio");
+    }
+}
+```
+
+> 通过HttpOutboundHandler实现httpclient请求封装，在请求前调用HttpRequestFilter，向请求头追加信息，在请求返回结果后返回前调用HttpResponseFilter，向响应头追加信息
+>
+> https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/nio/gateway/outbound/httpclient4/HttpOutboundHandler.java
+
+```java
+public void handle(final FullHttpRequest fullRequest, final ChannelHandlerContext ctx, HttpRequestFilter filter) {
+  String backendUrl = router.route(this.backendUrls);
+  final String url = backendUrl + fullRequest.uri();
+  // 请求过滤调用
+  filter.filter(fullRequest, ctx);
+  proxyService.submit(()->fetchGet(fullRequest, ctx, url));
+}
+private void handleResponse(final FullHttpRequest fullRequest, final ChannelHandlerContext ctx, final HttpResponse endpointResponse) throws Exception {
+  FullHttpResponse response = null;
+  try {
+    byte[] body = EntityUtils.toByteArray(endpointResponse.getEntity());
+    response = new DefaultFullHttpResponse(HTTP_1_1, OK, Unpooled.wrappedBuffer(body));
+    response.headers().set("Content-Type", "application/json");
+    response.headers().setInt("Content-Length", Integer.parseInt(endpointResponse.getFirstHeader("Content-Length").getValue()));
+    // 响应过滤调用
+    filter.filter(response);
+  } catch (Exception e) {
+    e.printStackTrace();
+    response = new DefaultFullHttpResponse(HTTP_1_1, NO_CONTENT);
+    exceptionCaught(ctx, e);
+  } finally {
+    if (fullRequest != null) {
+      if (!HttpUtil.isKeepAlive(fullRequest)) {
+        ctx.write(response).addListener(ChannelFutureListener.CLOSE);
+      } else {
+        ctx.write(response);
+      }
+    }
+    ctx.flush();
+  }
+}
+```
 
 ### 作业4
 
 完善网关的例子，实现路由，采用随机方式
 
+> 实现随机路由
+>
+> https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/nio/gateway/router/RandomHttpEndpointRouter.java
 
+```java
+public class RandomHttpEndpointRouter implements HttpEndpointRouter {
+    @Override
+    public String route(List<String> urls) {
+        int size = urls.size();
+        Random random = new Random(System.currentTimeMillis());
+        return urls.get(random.nextInt(size));
+    }
+}
+```
+
+> 通过HttpOutboundHandler实现httpclient请求封装，在请求前调用HttpEndpointRouter，进行随机路由选择，确定访问地址
+>
+> https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/nio/gateway/outbound/httpclient4/HttpOutboundHandler.java
+
+```java
+public void handle(final FullHttpRequest fullRequest, final ChannelHandlerContext ctx, HttpRequestFilter filter) {
+  // 请求路由选择
+  String backendUrl = router.route(this.backendUrls);
+  final String url = backendUrl + fullRequest.uri();
+  filter.filter(fullRequest, ctx);
+  proxyService.submit(()->fetchGet(fullRequest, ctx, url));
+}
+```
 
 ### 作业5
 
