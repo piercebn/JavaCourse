@@ -381,7 +381,243 @@ public void handle(final FullHttpRequest fullRequest, final ChannelHandlerContex
 
 多线程示例
 
+> DaemonThread示例（守护线程）
+>
+> https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/concurrency/conc01/DaemonThread.java
+>
+> JVM不会等待守护线程执行完毕再退出，当最后一个非*守护线程*结束时,*守护线程*随着JVM一同结束工作。
+>
+> The Java Virtual Machine exits when the only threads running are all daemon threads.
+>
+> 可以通过thread.setDaemon(true)来设置
 
+> RunnerMain示例（线程中断，线程组）
+>
+> https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/concurrency/conc01/RunnerMain.java
+>
+> 1.线程中断
+>
+> ```java
+> // 主线程逻辑
+> Runner2 runner2 = new Runner2();
+> Thread thread2 = new Thread(runner2);
+> thread2.start(); // 主线程启动子线程
+> thread2.interrupt(); // 主线程中断子线程，仅通知子线程中断，不会实际中断子线程，子线程可以根据isInterrupted接口判断来决定是否中断自己
+> // 子线程逻辑，Runner2中
+> ...... // 子线程处理逻辑，在执行过程中，外部主线程调用子线程的interrupt中断接口
+> Thread.currentThread().isInterrupted(); // 子线程中断状态为 true
+> Thread.interrupted(); // 判断当前子线程中断状态 true，并重置中断状态
+> Thread.currentThread().isInterrupted(); // 重置后，当前子线程中断状态为 false
+> ```
+>
+> 2.线程组相关
+>
+> ```java
+> System.out.println(Thread.activeCount());
+> Thread.currentThread().getThreadGroup().list();// main线程组
+> System.out.println(Thread.currentThread().getThreadGroup().getParent().activeGroupCount());
+> Thread.currentThread().getThreadGroup().getParent().list();// system线程组
+> ```
+
+> ThreadMain示例（3种线程启动方式）
+>
+> https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/concurrency/conc01/ThreadMain.java
+>
+> 在不进行任何线程间协同控制的情况下，线程执行完的顺序不可控
+>
+> 1.Thread方式启动
+>
+> ```java
+> ThreadA threadA = new ThreadA();
+> threadA.start();
+> ```
+>
+> 2.Runnable方式启动
+>
+> ```java
+> ThreadB threadB = new ThreadB();
+> new Thread(threadB).start();
+> ```
+>
+> 3.Callable方式启动（带返回值）
+>
+> ```java
+> ThreadC threadC = new ThreadC();
+> FutureTask<String> futureTask = new FutureTask<>(threadC);
+> new Thread(futureTask).start();
+> try {
+>   // 主线程等待返回结果
+> 	System.out.println("得到的返回结果是:" + futureTask.get());
+> } catch (InterruptedException e) {
+> 	e.printStackTrace();
+> } catch (ExecutionException e) {
+> 	e.printStackTrace();
+> }
+> ```
+
+> 线程协作Join Wait/Notify示例
+>
+> https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/concurrency/conc01/op/
+>
+> thread1.join仅会释放thread1的锁
+>
+> oo.wait仅会释放oo的锁，需要在锁定oo后（拥有oo监视器）才能调用
+>
+> oo.notify可以唤醒在oo上等待的线程，需要在锁定oo后（拥有oo监视器）才能调用
+>
+> oo.wait在接收到oo.notify后，会重新尝试获取oo的锁
+
+> 线程同步控制示例（使用synchronized控制同步块，方法，对象）
+>
+> https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/concurrency/conc01/sync/
+>
+> 通过synchronized实现临界区的线程安全访问
+
+> 线程池示例
+>
+> https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/concurrency/conc02/threadpool/
+>
+> 1.获取任务返回值结果（通过submit方式提交Callable任务）
+>
+> ```java
+> ScheduledExecutorService executorService = Executors.newScheduledThreadPool(16);
+> try {
+>     String str = executorService.submit(new Callable<String>() {
+>         @Override
+>         public String call() throws Exception {
+>             return "I am a task, which submited by the so called laoda, and run by those anonymous workers";
+>         }
+>     }).get();
+> 
+>     System.out.println("str=" + str);
+> } catch (Exception e) {
+>     e.printStackTrace();
+> }
+> ```
+>
+> 2.异常捕获
+>
+> ```java
+> ExecutorService executorService = Executors.newFixedThreadPool(1);
+> try {
+>   Future<Double> future = executorService.submit(() -> {
+>     throw new RuntimeException("executorService.submit()");
+>   });
+> 
+>   double b = future.get();
+>   System.out.println(b);
+> 
+> } catch (Exception ex) {
+>   System.out.println("catch submit"); // 可以捕获通过submit提交任务中抛出的异常
+>   ex.printStackTrace();
+> }
+> 
+> try {
+>   executorService.execute(() -> {
+>     throw new RuntimeException("executorService.execute()");
+>   });
+> } catch (Exception ex) {
+>   System.out.println("catch execute"); // 无法捕获通过excute执行任务中抛出的异常
+>   ex.printStackTrace();
+> }
+> 
+> executorService.shutdown();
+> System.out.println("Main Thread End!");
+> ```
+>
+> 3.Executors提供的4种创建线程池的方法
+>
+> 3.1 单线程，串行顺序执行
+>
+> ```java
+> ExecutorService executorService = Executors.newSingleThreadExecutor();
+> 
+> for (int i = 0; i < 10; i++) {
+>     final int no = i;
+>     executorService.execute(() -> {
+>         System.out.println("start:" + no);
+>         try {
+>             Thread.sleep(1000L);
+>         } catch (InterruptedException e) {
+>             e.printStackTrace();
+>         }
+>         System.out.println("end:" + no);
+>     });
+> }
+> executorService.shutdown();
+> System.out.println("Main Thread End!");
+> ```
+>
+> 3.2 固定大小线程池，指定固定线程并行执行任务，其他任务在队列中等待
+>
+> ```java
+> ExecutorService executorService = Executors.newFixedThreadPool(16);
+> for (int i = 0; i < 100; i++) {
+>     final int no = i;
+>     executorService.execute(() -> {
+>         try {
+>             System.out.println("start:" + no);
+>             Thread.sleep(1000L);
+>             System.out.println("end:" + no);
+>         } catch (InterruptedException e) {
+>             e.printStackTrace();
+>         }
+>     });
+> }
+> executorService.shutdown(); // 停止接收新任务，原来的任务继续执行
+> System.out.println("Main Thread End!");
+> ```
+>
+> 3.3 可缓存的线程池，线程池大小不做限制
+>
+> ```java
+> ExecutorService executorService = Executors.newCachedThreadPool();
+> 
+> for (int i = 0; i < 10000; i++) {
+>     final int no = i;
+>     Runnable runnable = new Runnable() {
+>         @Override
+>         public void run() {
+>             try {
+>                 System.out.println("start:" + no);
+>                 Thread.sleep(1000L);
+>                 System.out.println("end:" + no);
+>             } catch (InterruptedException e) {
+>                 e.printStackTrace();
+>             }
+>         }
+>     };
+>     executorService.execute(runnable);
+> }
+> executorService.shutdown();
+> System.out.println("Main Thread End!");
+> ```
+>
+> 3.4 可定时执行或周期性执行任务的线程池，线程池大小不做限制
+>
+> ```java
+> ScheduledExecutorService executorService = Executors.newScheduledThreadPool(16);
+> 
+> for (int i = 0; i < 100; i++) {
+>     final int no = i;
+>     Runnable runnable = new Runnable() {
+>         @Override
+>         public void run() {
+>             try {
+>                 System.out.println("start:" + no);
+>                 Thread.sleep(1000L);
+>                 System.out.println("end:" + no);
+>             } catch (InterruptedException e) {
+>                 e.printStackTrace();
+>             }
+>         }
+>     };
+>     // 10s后执行
+>     executorService.schedule(runnable, 10, TimeUnit.SECONDS);
+> }
+> executorService.shutdown();
+> System.out.println("Main Thread End!");
+> ```
 
 ### 作业6
 
