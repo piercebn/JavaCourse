@@ -17,11 +17,77 @@
 
 ### 作业1
 
+> Lock相关示例
+>
+> 1.死锁示例（synchronized相互等待）
+>
+> https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/concurrency/conc02/lock/LockMain.java
+>
+> 2.使用Lock示例（使用ReentrantLock，替换synchronized）
+>
+> https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/concurrency/conc02/lock/ReentrantLockDemo.java
+>
+> 3.使用Lock示例（使用ReentrantLock，测试公平锁与非公平锁）
+>
+> https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/concurrency/conc02/lock/ReentrantLockDemo.java
+>
+> 4.使用读写锁示例（使用ReentrantReadWriteLock）
+>
+> https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/concurrency/conc02/lock/ReentrantReadWriteLockDemo.java
+>
+> 5.使用Condition示例（使用lock.newCondition()进行子锁进行协作控制）
+>
+> https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/concurrency/conc02/lock/ConditionDemo.java
+>
+> 6.锁当前线程示例（使用LockSupport）
+>
+> https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/concurrency/conc02/lock/LockSupportDemo.java
+
 
 
 ### 作业2
 
-
+> 启动线程获取返回结果，实现10种方式
+>
+> 方法1：用join等待
+>
+> https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/concurrency/Homework/Homework01.java
+>
+> 方法2：用wait和notify机制
+>
+> https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/concurrency/Homework/Homework02.java
+>
+> 方法3：用sleep循环等待
+>
+> https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/concurrency/Homework/Homework03.java
+>
+> 方法4：用线程池submit+Runnable
+>
+> https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/concurrency/Homework/Homework04.java
+>
+> 方法5：用线程池submit+Callable
+>
+> https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/concurrency/Homework/Homework05.java
+>
+> 方法6：用Semaphore信号量
+>
+> https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/concurrency/Homework/Homework06.java
+>
+> 方法7：用CountDownLatch
+>
+> https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/concurrency/Homework/Homework07.java
+>
+> 方法8：用线程池FutureTask+Callable
+>
+> https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/concurrency/Homework/Homework08.java
+>
+> 方法9：用CompletableFuture+Supplier
+>
+> https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/concurrency/Homework/Homework09.java
+>
+> 方法10：用Condition机制
+>
+> https://github.com/piercebn/JavaCourse/blob/main/01jvm/java-cource/src/main/java/com/piercebn/javacource/concurrency/Homework/Homework10.java
 
 ### 作业3
 
@@ -37,9 +103,9 @@
 
 ### 作业6
 
+> 多线程和并发相关知识脑图
 
-
-
+![concurrency](03concurreny/images/concurrency.png)
 
 
 
