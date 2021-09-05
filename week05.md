@@ -4,7 +4,6 @@
 
 **1.（选做）**使 Java 里的动态代理，实现一个简单的 AOP。
 **2.（必做）**写代码实现 Spring Bean 的装配，方式越多越好（XML、Annotation 都可以）, 提交到 GitHub。
-**3.（选做）**实现一个 Spring XML 自定义配置，配置一组 Bean，例如：Student/Klass/School。
 
 **8.（必做）**给前面课程提供的 Student/Klass/School 实现自动配置和 Starter。
 **9.（选做**）学习 MyBatis-generator 的用法和原理，学会自定义 TypeHandler 处理复杂类型。
@@ -150,7 +149,9 @@
 
 ### 作业8
 
-
+> 自动化装配Student/Klass/School 
+>
+> https://github.com/piercebn/JavaCourse/blob/main/04fx/app/src/main/java/com/example/app/BeanAutoConfiguration.java
 
 ### 作业10
 
