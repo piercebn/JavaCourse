@@ -155,7 +155,45 @@
 
 ### 作业10
 
-
+> 使用 JDBC 原生接口，使用事务，PrepareStatement 方式，实现数据库的增删改查操作
+>
+> 数据库配置，需要本地数据库提前配置好
+>
+> ```
+> spring.datasource.url = jdbc:mysql://localhost:3306/test?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false
+> spring.datasource.username = root
+> spring.datasource.password = 123456
+> spring.datasource.driver-class-name = com.mysql.cj.jdbc.Driver
+> ```
+>
+> 使用Hikari 连接池或JDBC 原生接口获取Connection
+>
+> ```java
+> public Connection prepareConnection(boolean isUsePool) {
+>   if (isUsePool) {
+>     System.out.println(ds.getClass().getName());
+>     try {
+>       //使用线程池
+>       connection = ds.getConnection();
+>     } catch (SQLException e) {
+>       e.printStackTrace();
+>     }
+>   } else {
+>     try {
+>       //读取驱动
+>       Class.forName(driver);
+>       connection = DriverManager.getConnection(url, user, password);
+>     } catch (Exception e) {
+>       e.printStackTrace();
+>     }
+>   }
+>   return connection;
+> }
+> ```
+>
+> https://github.com/piercebn/JavaCourse/blob/main/04fx/app/src/main/java/com/example/jdbc/DBApplication.java
+>
+> https://github.com/piercebn/JavaCourse/blob/main/04fx/app/src/main/java/com/example/jdbc/JDBCUtils.java
 
 
 
