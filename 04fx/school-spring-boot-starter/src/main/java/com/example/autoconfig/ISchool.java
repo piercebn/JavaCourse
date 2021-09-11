@@ -1,4 +1,4 @@
-package com.example.app;
+package com.example.autoconfig;
 
 public interface ISchool {
     void ding();

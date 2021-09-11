@@ -1,4 +1,4 @@
-package com.example.app;
+package com.example.autoconfig;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ public class School implements ISchool {
     @Override
     public void ding(){
 
-        System.out.println("Class1 have " + this.class1.getStudents().size() + " students and one is " + this.student100);
+        System.out.println(this.getClass()+" have " + this.class1.getStudents().size() + " students and one is " + this.student100);
 
     }
 

@@ -1,4 +1,4 @@
-package com.example.app;
+package com.example.autoconfig;
 
 import lombok.Data;
 
@@ -10,7 +10,7 @@ public class Klass {
     List<Student> students;
 
     public void dong(){
-        System.out.println(this.getStudents());
+        System.out.println(this.getClass()+" : "+this.getStudents());
     }
 
 }

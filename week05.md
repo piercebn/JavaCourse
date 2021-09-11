@@ -149,9 +149,106 @@
 
 ### 作业8
 
-> 自动化装配Student/Klass/School 
+>  Student/Klass/School 实现自动配置和 Starter
 >
-> https://github.com/piercebn/JavaCourse/blob/main/04fx/app/src/main/java/com/example/app/BeanAutoConfiguration.java
+> 应用程序引入school-spring-boot-starter
+>
+> https://github.com/piercebn/JavaCourse/blob/main/04fx/app/pom.xml
+>
+> https://github.com/piercebn/JavaCourse/blob/main/04fx/app/src/main/resources/application.properties
+>
+> https://github.com/piercebn/JavaCourse/blob/main/04fx/app/src/main/java/com/example/app/App.java
+>
+> ```java
+> 1.pom.xml中添加
+> <dependency>
+>   <groupId>com.example.autoconfig</groupId>
+>   <artifactId>school-spring-boot-starter</artifactId>
+>   <version>1.0-SNAPSHOT</version>
+> </dependency>
+> 2.application.properties中属性配置
+> # school-spring-boot-starter
+> student.enabled=true
+> student.student100.id=100
+> student.student100.name=KK100
+> student.student123.id=123
+> student.student123.name=KK123
+> 3.程序中自动注入使用
+> @Resource(name = "student100")
+> Student student;
+> @Resource(name = "Klass")
+> Klass klass;
+> @Resource(name = "School")
+> School school;
+> ```
+>
+> 构建school-spring-boot-starter
+>
+> https://github.com/piercebn/JavaCourse/blob/main/04fx/school-spring-boot-starter/src/main/java/com/example/autoconfig/SchoolAutoConfiguration.java
+>
+> ```java
+> @Configuration
+> @EnableConfigurationProperties({Student100Properties.class,Student123Properties.class})
+> @ConditionalOnProperty(prefix = "student",name = "enabled", havingValue = "true", matchIfMissing = true)
+> public class SchoolAutoConfiguration {
+> 
+>     @Autowired
+>     private Student100Properties student100Properties;
+> 
+>     @Autowired
+>     private Student123Properties student123Properties;
+> 
+>     @Bean(name = "student123")
+>     public Student getStudent123() {
+>         Student student = new Student();
+>         student.setId(student123Properties.getId());
+>         student.setName(student123Properties.getName());
+>         return student;
+>     }
+> 
+>     @Bean(name = "student100")
+>     public Student getStudent100() {
+>         Student student = new Student();
+>         student.setId(student100Properties.getId());
+>         student.setName(student100Properties.getName());
+>         return student;
+>     }
+> 
+>     @Bean(name = "Klass")
+>     public Klass getKlass() {
+>         Klass klass = new Klass();
+>         List<Student> list = new ArrayList<>();
+>         list.add(getStudent100());
+>         list.add(getStudent123());
+>         klass.setStudents(list);
+>         return klass;
+>     }
+> 
+>     @Bean(name = "School")
+>     public School getSchool() {
+>         return new School();
+>     }
+> }
+> ```
+>
+> https://github.com/piercebn/JavaCourse/blob/main/04fx/school-spring-boot-starter/src/main/java/com/example/autoconfig/Student100Properties.java
+>
+> ```java
+> @ConfigurationProperties(prefix = "student.student100")
+> @Getter
+> @Setter
+> public class Student100Properties {
+>     private int id = 1;
+>     private String name = "KK1";
+> 
+> }
+> ```
+>
+> https://github.com/piercebn/JavaCourse/blob/main/04fx/school-spring-boot-starter/src/main/resources/META-INF/spring.factories
+>
+> ```properties
+> org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.example.autoconfig.SchoolAutoConfiguration
+> ```
 
 ### 作业10
 
@@ -159,35 +256,64 @@
 >
 > 数据库配置，需要本地数据库提前配置好
 >
-> ```
+> ```properties
 > spring.datasource.url = jdbc:mysql://localhost:3306/test?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false
 > spring.datasource.username = root
 > spring.datasource.password = 123456
 > spring.datasource.driver-class-name = com.mysql.cj.jdbc.Driver
+> # Hikari will use the above plus the following to setup connection pooling
+> spring.datasource.type=com.zaxxer.hikari.HikariDataSource
+> spring.datasource.hikari.minimum-idle=5
+> spring.datasource.hikari.maximum-pool-size=15
+> spring.datasource.hikari.auto-commit=true
+> spring.datasource.hikari.idle-timeout=30000
+> spring.datasource.hikari.pool-name=DatebookHikariCP
+> spring.datasource.hikari.max-lifetime=1800000
+> spring.datasource.hikari.connection-timeout=30000
+> spring.datasource.hikari.connection-test-query=SELECT 1
 > ```
 >
 > 使用Hikari 连接池或JDBC 原生接口获取Connection
 >
 > ```java
+> // 使用Hikari连接池，如不指定spring.datasource.type默认为HikariDataSource
+> @Autowired
+> private DataSource ds;
+> 
+> // 使用JDBC原生接口
+> @Value("${spring.datasource.driver-class-name}")
+> private String driver;
+> 
+> @Value("${spring.datasource.url}")
+> private String url;
+> 
+> @Value("${spring.datasource.username}")
+> private String user;
+> 
+> @Value("${spring.datasource.password}")
+> private String password;
+> 
+> Connection connection = null;
+> 
 > public Connection prepareConnection(boolean isUsePool) {
->   if (isUsePool) {
->     System.out.println(ds.getClass().getName());
->     try {
->       //使用线程池
->       connection = ds.getConnection();
->     } catch (SQLException e) {
->       e.printStackTrace();
->     }
->   } else {
->     try {
->       //读取驱动
->       Class.forName(driver);
->       connection = DriverManager.getConnection(url, user, password);
->     } catch (Exception e) {
->       e.printStackTrace();
->     }
->   }
->   return connection;
+> if (isUsePool) {
+>  System.out.println(ds.getClass().getName());
+>  try {
+>    //使用线程池
+>    connection = ds.getConnection();
+>  } catch (SQLException e) {
+>    e.printStackTrace();
+>  }
+> } else {
+>  try {
+>    //读取驱动
+>    Class.forName(driver);
+>    connection = DriverManager.getConnection(url, user, password);
+>  } catch (Exception e) {
+>    e.printStackTrace();
+>  }
+> }
+> return connection;
 > }
 > ```
 >

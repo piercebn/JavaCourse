@@ -12,11 +12,11 @@ import java.util.List;
 @Component
 public class JDBCUtils {
 
+    // 使用Hikari连接池，如不指定spring.datasource.type默认为HikariDataSource
     @Autowired
     private DataSource ds;
 
-    Connection connection = null;
-
+    // 使用JDBC原生接口
     @Value("${spring.datasource.driver-class-name}")
     private String driver;
 
@@ -28,6 +28,8 @@ public class JDBCUtils {
 
     @Value("${spring.datasource.password}")
     private String password;
+
+    Connection connection = null;
 
     public Connection prepareConnection(boolean isUsePool) {
         if (isUsePool) {
