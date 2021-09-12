@@ -10,7 +10,9 @@
 
 > 电商交易场景（用户、商品、订单）表结构设计
 >
-> 
+> 主要涉及用户表，订单表，订单详情表，商品表，供应商表
+>
+> https://github.com/piercebn/JavaCourse/blob/main/05sql/init.sql
 
 
 
