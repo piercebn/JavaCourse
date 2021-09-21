@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mysql.appmysql.dao.T1Dao">
+
+    <resultMap type="com.example.mysql.appmysql.entity.T1" id="T1Map">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="T1Map">
+        select
+          id
+        from t1
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="T1Map">
+        select
+          id
+        from t1
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from t1
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="" useGeneratedKeys="true">
+        insert into t1(id)
+        values (#{id})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="" useGeneratedKeys="true">
+        insert into t1(id)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.id})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="" useGeneratedKeys="true">
+        insert into t1(id)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.id})
+        </foreach>
+        on duplicate key update
+        id = values(id)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update t1
+        <set>
+            <if test="id != null">
+                id = #{id},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from t1 where id = #{id}
+    </delete>
+
+</mapper>
+
