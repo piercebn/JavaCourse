@@ -18,7 +18,7 @@ import javax.annotation.Resource;
  * @since 2021-09-21 21:25:25
  */
 @Service("t1Service")
-@DS("slave")
+@DS("slave2")
 public class T1ServiceImpl implements T1Service {
     @Resource
     private T1Dao t1Dao;
@@ -74,7 +74,7 @@ public class T1ServiceImpl implements T1Service {
     /**
      * 通过主键删除数据
      *
-     * @param  主键
+     * @param id 主键
      * @return 是否成功
      */
     @Override
