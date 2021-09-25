@@ -1,0 +1,492 @@
+Thanks for using Atomikos! Evaluate http://www.atomikos.com/Main/ExtremeTransactions for advanced features and professional support
+or register at http://www.atomikos.com/Main/RegisterYourDownload to disable this message and receive FREE tips & advice
+[INFO ] 2021-09-25 20:26:19.738 [main] o.a.s.p.i.i.AbstractBootstrapInitializer - Database name is `MySQL`, version is `5.7.35`
+[INFO ] 2021-09-25 20:26:19.978 [main] o.a.s.p.frontend.ShardingSphereProxy - ShardingSphere-Proxy start success.
+[INFO ] 2021-09-25 20:27:31.996 [ShardingSphere-Command-0] ShardingSphere-SQL - Logic SQL: SHOW COLUMNS FROM t_order FROM sharding_db
+[INFO ] 2021-09-25 20:27:31.998 [ShardingSphere-Command-0] ShardingSphere-SQL - SQLStatement: MySQLShowColumnsStatement(table=SimpleTableSegment(tableName=TableNameSegment(startIndex=18, stopIndex=24, identifier=IdentifierValue(value=t_order, quoteCharacter=NONE)), owner=Optional.empty, alias=Optional.empty), fromSchema=Optional[org.apache.shardingsphere.sql.parser.sql.common.segment.dal.FromSchemaSegment@7315aca4])
+[INFO ] 2021-09-25 20:27:31.998 [ShardingSphere-Command-0] ShardingSphere-SQL - Actual SQL: ds_0 ::: SHOW COLUMNS FROM t_order_0 
+[INFO ] 2021-09-25 20:27:55.174 [ShardingSphere-Command-0] ShardingSphere-SQL - Logic SQL: select * from t_order
+[INFO ] 2021-09-25 20:27:55.174 [ShardingSphere-Command-0] ShardingSphere-SQL - SQLStatement: MySQLSelectStatement(limit=Optional.empty, lock=Optional.empty, window=Optional.empty)
+[INFO ] 2021-09-25 20:27:55.174 [ShardingSphere-Command-0] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_0 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:27:55.174 [ShardingSphere-Command-0] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_1 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:27:55.174 [ShardingSphere-Command-0] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_2 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:27:55.174 [ShardingSphere-Command-0] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_3 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:27:55.174 [ShardingSphere-Command-0] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_4 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:27:55.174 [ShardingSphere-Command-0] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_5 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:27:55.174 [ShardingSphere-Command-0] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_6 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:27:55.174 [ShardingSphere-Command-0] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_7 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:27:55.174 [ShardingSphere-Command-0] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_8 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:27:55.174 [ShardingSphere-Command-0] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_9 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:27:55.174 [ShardingSphere-Command-0] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_10 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:27:55.174 [ShardingSphere-Command-0] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_11 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:27:55.174 [ShardingSphere-Command-0] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_12 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:27:55.174 [ShardingSphere-Command-0] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_13 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:27:55.175 [ShardingSphere-Command-0] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_14 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:27:55.175 [ShardingSphere-Command-0] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_15 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:27:55.175 [ShardingSphere-Command-0] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_0 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:27:55.175 [ShardingSphere-Command-0] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_1 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:27:55.175 [ShardingSphere-Command-0] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_2 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:27:55.175 [ShardingSphere-Command-0] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_3 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:27:55.175 [ShardingSphere-Command-0] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_4 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:27:55.175 [ShardingSphere-Command-0] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_5 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:27:55.175 [ShardingSphere-Command-0] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_6 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:27:55.175 [ShardingSphere-Command-0] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_7 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:27:55.175 [ShardingSphere-Command-0] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_8 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:27:55.175 [ShardingSphere-Command-0] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_9 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:27:55.175 [ShardingSphere-Command-0] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_10 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:27:55.175 [ShardingSphere-Command-0] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_11 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:27:55.175 [ShardingSphere-Command-0] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_12 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:27:55.175 [ShardingSphere-Command-0] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_13 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:27:55.175 [ShardingSphere-Command-0] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_14 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:27:55.175 [ShardingSphere-Command-0] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_15 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:31:39.253 [ShardingSphere-Command-1] ShardingSphere-SQL - Logic SQL: insert into t_order(user_id, status) values(1,"OK"),(1,"FAIL")
+[INFO ] 2021-09-25 20:31:39.253 [ShardingSphere-Command-1] ShardingSphere-SQL - SQLStatement: MySQLInsertStatement(setAssignment=Optional.empty, onDuplicateKeyColumns=Optional.empty)
+[INFO ] 2021-09-25 20:31:39.253 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_0(user_id, status, order_id) values(1, 'OK', 648621847038373888)
+[INFO ] 2021-09-25 20:31:39.253 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_1(user_id, status, order_id) values(1, 'FAIL', 648621847038373889)
+[INFO ] 2021-09-25 20:31:39.264 [ShardingSphere-Command-1] ShardingSphere-SQL - Logic SQL: insert into t_order(user_id, status) values(2,"OK"),(2,"FAIL")
+[INFO ] 2021-09-25 20:31:39.264 [ShardingSphere-Command-1] ShardingSphere-SQL - SQLStatement: MySQLInsertStatement(setAssignment=Optional.empty, onDuplicateKeyColumns=Optional.empty)
+[INFO ] 2021-09-25 20:31:39.264 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_0 ::: insert into t_order_1(user_id, status, order_id) values(2, 'OK', 648621847533301761)
+[INFO ] 2021-09-25 20:31:39.264 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_0 ::: insert into t_order_2(user_id, status, order_id) values(2, 'FAIL', 648621847533301762)
+[INFO ] 2021-09-25 20:31:39.270 [ShardingSphere-Command-1] ShardingSphere-SQL - Logic SQL: insert into t_order(user_id, status) values(3,"OK"),(3,"FAIL")
+[INFO ] 2021-09-25 20:31:39.270 [ShardingSphere-Command-1] ShardingSphere-SQL - SQLStatement: MySQLInsertStatement(setAssignment=Optional.empty, onDuplicateKeyColumns=Optional.empty)
+[INFO ] 2021-09-25 20:31:39.270 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_0(user_id, status, order_id) values(3, 'OK', 648621847558467584)
+[INFO ] 2021-09-25 20:31:39.270 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_1(user_id, status, order_id) values(3, 'FAIL', 648621847558467585)
+[INFO ] 2021-09-25 20:31:40.196 [ShardingSphere-Command-1] ShardingSphere-SQL - Logic SQL: insert into t_order(user_id, status) values(4,"OK"),(4,"FAIL")
+[INFO ] 2021-09-25 20:31:40.197 [ShardingSphere-Command-1] ShardingSphere-SQL - SQLStatement: MySQLInsertStatement(setAssignment=Optional.empty, onDuplicateKeyColumns=Optional.empty)
+[INFO ] 2021-09-25 20:31:40.197 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_0 ::: insert into t_order_1(user_id, status, order_id) values(4, 'OK', 648621851438198785)
+[INFO ] 2021-09-25 20:31:40.197 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_0 ::: insert into t_order_2(user_id, status, order_id) values(4, 'FAIL', 648621851438198786)
+[INFO ] 2021-09-25 20:31:45.347 [ShardingSphere-Command-1] ShardingSphere-SQL - Logic SQL: select * from t_order
+[INFO ] 2021-09-25 20:31:45.347 [ShardingSphere-Command-1] ShardingSphere-SQL - SQLStatement: MySQLSelectStatement(limit=Optional.empty, lock=Optional.empty, window=Optional.empty)
+[INFO ] 2021-09-25 20:31:45.348 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_0 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:31:45.348 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_1 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:31:45.348 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_2 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:31:45.348 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_3 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:31:45.348 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_4 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:31:45.348 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_5 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:31:45.348 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_6 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:31:45.348 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_7 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:31:45.348 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_8 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:31:45.348 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_9 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:31:45.348 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_10 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:31:45.348 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_11 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:31:45.349 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_12 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:31:45.349 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_13 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:31:45.349 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_14 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:31:45.349 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_15 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:31:45.349 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_0 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:31:45.349 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_1 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:31:45.349 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_2 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:31:45.349 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_3 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:31:45.349 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_4 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:31:45.349 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_5 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:31:45.349 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_6 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:31:45.349 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_7 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:31:45.349 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_8 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:31:45.349 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_9 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:31:45.349 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_10 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:31:45.349 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_11 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:31:45.350 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_12 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:31:45.350 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_13 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:31:45.350 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_14 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:31:45.350 [ShardingSphere-Command-1] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_15 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:33:54.526 [ShardingSphere-Command-2] ShardingSphere-SQL - Logic SQL: insert into t_order(user_id, status) values(5,"OK"),(5,"FAIL")
+[INFO ] 2021-09-25 20:33:54.527 [ShardingSphere-Command-2] ShardingSphere-SQL - SQLStatement: MySQLInsertStatement(setAssignment=Optional.empty, onDuplicateKeyColumns=Optional.empty)
+[INFO ] 2021-09-25 20:33:54.528 [ShardingSphere-Command-2] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_0(user_id, status, order_id) values(5, 'OK', 648622414859055104)
+[INFO ] 2021-09-25 20:33:54.528 [ShardingSphere-Command-2] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_1(user_id, status, order_id) values(5, 'FAIL', 648622414859055105)
+[INFO ] 2021-09-25 20:33:54.544 [ShardingSphere-Command-2] ShardingSphere-SQL - Logic SQL: insert into t_order(user_id, status) values(6,"OK"),(6,"FAIL")
+[INFO ] 2021-09-25 20:33:54.544 [ShardingSphere-Command-2] ShardingSphere-SQL - SQLStatement: MySQLInsertStatement(setAssignment=Optional.empty, onDuplicateKeyColumns=Optional.empty)
+[INFO ] 2021-09-25 20:33:54.544 [ShardingSphere-Command-2] ShardingSphere-SQL - Actual SQL: ds_0 ::: insert into t_order_1(user_id, status, order_id) values(6, 'OK', 648622414938746881)
+[INFO ] 2021-09-25 20:33:54.544 [ShardingSphere-Command-2] ShardingSphere-SQL - Actual SQL: ds_0 ::: insert into t_order_2(user_id, status, order_id) values(6, 'FAIL', 648622414938746882)
+[INFO ] 2021-09-25 20:33:54.552 [ShardingSphere-Command-2] ShardingSphere-SQL - Logic SQL: insert into t_order(user_id, status) values(7,"OK"),(7,"FAIL")
+[INFO ] 2021-09-25 20:33:54.552 [ShardingSphere-Command-2] ShardingSphere-SQL - SQLStatement: MySQLInsertStatement(setAssignment=Optional.empty, onDuplicateKeyColumns=Optional.empty)
+[INFO ] 2021-09-25 20:33:54.552 [ShardingSphere-Command-2] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_0(user_id, status, order_id) values(7, 'OK', 648622414972301312)
+[INFO ] 2021-09-25 20:33:54.552 [ShardingSphere-Command-2] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_1(user_id, status, order_id) values(7, 'FAIL', 648622414972301313)
+[INFO ] 2021-09-25 20:33:54.563 [ShardingSphere-Command-2] ShardingSphere-SQL - Logic SQL: insert into t_order(user_id, status) values(8,"OK"),(8,"FAIL")
+[INFO ] 2021-09-25 20:33:54.564 [ShardingSphere-Command-2] ShardingSphere-SQL - SQLStatement: MySQLInsertStatement(setAssignment=Optional.empty, onDuplicateKeyColumns=Optional.empty)
+[INFO ] 2021-09-25 20:33:54.564 [ShardingSphere-Command-2] ShardingSphere-SQL - Actual SQL: ds_0 ::: insert into t_order_1(user_id, status, order_id) values(8, 'OK', 648622415014244353)
+[INFO ] 2021-09-25 20:33:54.564 [ShardingSphere-Command-2] ShardingSphere-SQL - Actual SQL: ds_0 ::: insert into t_order_2(user_id, status, order_id) values(8, 'FAIL', 648622415014244354)
+[INFO ] 2021-09-25 20:33:54.571 [ShardingSphere-Command-2] ShardingSphere-SQL - Logic SQL: insert into t_order(user_id, status) values(9,"OK"),(9,"FAIL")
+[INFO ] 2021-09-25 20:33:54.571 [ShardingSphere-Command-2] ShardingSphere-SQL - SQLStatement: MySQLInsertStatement(setAssignment=Optional.empty, onDuplicateKeyColumns=Optional.empty)
+[INFO ] 2021-09-25 20:33:54.571 [ShardingSphere-Command-2] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_0(user_id, status, order_id) values(9, 'OK', 648622415051993088)
+[INFO ] 2021-09-25 20:33:54.571 [ShardingSphere-Command-2] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_1(user_id, status, order_id) values(9, 'FAIL', 648622415051993089)
+[INFO ] 2021-09-25 20:33:54.577 [ShardingSphere-Command-2] ShardingSphere-SQL - Logic SQL: insert into t_order(user_id, status) values(10,"OK"),(10,"FAIL")
+[INFO ] 2021-09-25 20:33:54.577 [ShardingSphere-Command-2] ShardingSphere-SQL - SQLStatement: MySQLInsertStatement(setAssignment=Optional.empty, onDuplicateKeyColumns=Optional.empty)
+[INFO ] 2021-09-25 20:33:54.577 [ShardingSphere-Command-2] ShardingSphere-SQL - Actual SQL: ds_0 ::: insert into t_order_1(user_id, status, order_id) values(10, 'OK', 648622415077158913)
+[INFO ] 2021-09-25 20:33:54.577 [ShardingSphere-Command-2] ShardingSphere-SQL - Actual SQL: ds_0 ::: insert into t_order_2(user_id, status, order_id) values(10, 'FAIL', 648622415077158914)
+[INFO ] 2021-09-25 20:33:54.587 [ShardingSphere-Command-2] ShardingSphere-SQL - Logic SQL: insert into t_order(user_id, status) values(11,"OK"),(11,"FAIL")
+[INFO ] 2021-09-25 20:33:54.587 [ShardingSphere-Command-2] ShardingSphere-SQL - SQLStatement: MySQLInsertStatement(setAssignment=Optional.empty, onDuplicateKeyColumns=Optional.empty)
+[INFO ] 2021-09-25 20:33:54.587 [ShardingSphere-Command-2] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_0(user_id, status, order_id) values(11, 'OK', 648622415119101952)
+[INFO ] 2021-09-25 20:33:54.587 [ShardingSphere-Command-2] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_1(user_id, status, order_id) values(11, 'FAIL', 648622415119101953)
+[INFO ] 2021-09-25 20:33:54.593 [ShardingSphere-Command-2] ShardingSphere-SQL - Logic SQL: insert into t_order(user_id, status) values(12,"OK"),(12,"FAIL")
+[INFO ] 2021-09-25 20:33:54.593 [ShardingSphere-Command-2] ShardingSphere-SQL - SQLStatement: MySQLInsertStatement(setAssignment=Optional.empty, onDuplicateKeyColumns=Optional.empty)
+[INFO ] 2021-09-25 20:33:54.593 [ShardingSphere-Command-2] ShardingSphere-SQL - Actual SQL: ds_0 ::: insert into t_order_1(user_id, status, order_id) values(12, 'OK', 648622415144267777)
+[INFO ] 2021-09-25 20:33:54.593 [ShardingSphere-Command-2] ShardingSphere-SQL - Actual SQL: ds_0 ::: insert into t_order_2(user_id, status, order_id) values(12, 'FAIL', 648622415144267778)
+[INFO ] 2021-09-25 20:33:54.603 [ShardingSphere-Command-2] ShardingSphere-SQL - Logic SQL: insert into t_order(user_id, status) values(13,"OK"),(13,"FAIL")
+[INFO ] 2021-09-25 20:33:54.603 [ShardingSphere-Command-2] ShardingSphere-SQL - SQLStatement: MySQLInsertStatement(setAssignment=Optional.empty, onDuplicateKeyColumns=Optional.empty)
+[INFO ] 2021-09-25 20:33:54.603 [ShardingSphere-Command-2] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_0(user_id, status, order_id) values(13, 'OK', 648622415186210816)
+[INFO ] 2021-09-25 20:33:54.603 [ShardingSphere-Command-2] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_1(user_id, status, order_id) values(13, 'FAIL', 648622415186210817)
+[INFO ] 2021-09-25 20:33:54.607 [ShardingSphere-Command-2] ShardingSphere-SQL - Logic SQL: insert into t_order(user_id, status) values(14,"OK"),(14,"FAIL")
+[INFO ] 2021-09-25 20:33:54.607 [ShardingSphere-Command-2] ShardingSphere-SQL - SQLStatement: MySQLInsertStatement(setAssignment=Optional.empty, onDuplicateKeyColumns=Optional.empty)
+[INFO ] 2021-09-25 20:33:54.607 [ShardingSphere-Command-2] ShardingSphere-SQL - Actual SQL: ds_0 ::: insert into t_order_1(user_id, status, order_id) values(14, 'OK', 648622415202988033)
+[INFO ] 2021-09-25 20:33:54.607 [ShardingSphere-Command-2] ShardingSphere-SQL - Actual SQL: ds_0 ::: insert into t_order_2(user_id, status, order_id) values(14, 'FAIL', 648622415202988034)
+[INFO ] 2021-09-25 20:33:54.612 [ShardingSphere-Command-2] ShardingSphere-SQL - Logic SQL: insert into t_order(user_id, status) values(15,"OK"),(15,"FAIL")
+[INFO ] 2021-09-25 20:33:54.612 [ShardingSphere-Command-2] ShardingSphere-SQL - SQLStatement: MySQLInsertStatement(setAssignment=Optional.empty, onDuplicateKeyColumns=Optional.empty)
+[INFO ] 2021-09-25 20:33:54.612 [ShardingSphere-Command-2] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_0(user_id, status, order_id) values(15, 'OK', 648622415223959552)
+[INFO ] 2021-09-25 20:33:54.612 [ShardingSphere-Command-2] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_1(user_id, status, order_id) values(15, 'FAIL', 648622415223959553)
+[INFO ] 2021-09-25 20:33:55.600 [ShardingSphere-Command-2] ShardingSphere-SQL - Logic SQL: insert into t_order(user_id, status) values(16,"OK"),(16,"FAIL")
+[INFO ] 2021-09-25 20:33:55.601 [ShardingSphere-Command-2] ShardingSphere-SQL - SQLStatement: MySQLInsertStatement(setAssignment=Optional.empty, onDuplicateKeyColumns=Optional.empty)
+[INFO ] 2021-09-25 20:33:55.601 [ShardingSphere-Command-2] ShardingSphere-SQL - Actual SQL: ds_0 ::: insert into t_order_1(user_id, status, order_id) values(16, 'OK', 648622419363737601)
+[INFO ] 2021-09-25 20:33:55.601 [ShardingSphere-Command-2] ShardingSphere-SQL - Actual SQL: ds_0 ::: insert into t_order_2(user_id, status, order_id) values(16, 'FAIL', 648622419363737602)
+[INFO ] 2021-09-25 20:46:43.822 [ShardingSphere-Command-3] ShardingSphere-SQL - Logic SQL: insert into t_order(user_id, status) values(1,"FAIL1"),(1,"FAIL2"),(1,"FAIL3"),(1,"FAIL4"),(1,"FAIL5"),(1,"FAIL6"),(1,"FAIL7"),(1,"FAIL8"),(1,"FAIL9"),(1,"FAIL10"),(1,"FAIL11"),(1,"FAIL12"),(1,"FAIL13"),(1,"FAIL14"),(1,"FAIL15"),(1,"FAIL16")
+[INFO ] 2021-09-25 20:46:43.823 [ShardingSphere-Command-3] ShardingSphere-SQL - SQLStatement: MySQLInsertStatement(setAssignment=Optional.empty, onDuplicateKeyColumns=Optional.empty)
+[INFO ] 2021-09-25 20:46:43.823 [ShardingSphere-Command-3] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_0(user_id, status, order_id) values(1, 'FAIL1', 648625641486790656)
+[INFO ] 2021-09-25 20:46:43.824 [ShardingSphere-Command-3] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_1(user_id, status, order_id) values(1, 'FAIL2', 648625641486790657)
+[INFO ] 2021-09-25 20:46:43.824 [ShardingSphere-Command-3] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_2(user_id, status, order_id) values(1, 'FAIL3', 648625641486790658)
+[INFO ] 2021-09-25 20:46:43.824 [ShardingSphere-Command-3] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_3(user_id, status, order_id) values(1, 'FAIL4', 648625641486790659)
+[INFO ] 2021-09-25 20:46:43.824 [ShardingSphere-Command-3] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_4(user_id, status, order_id) values(1, 'FAIL5', 648625641486790660)
+[INFO ] 2021-09-25 20:46:43.824 [ShardingSphere-Command-3] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_5(user_id, status, order_id) values(1, 'FAIL6', 648625641486790661)
+[INFO ] 2021-09-25 20:46:43.824 [ShardingSphere-Command-3] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_6(user_id, status, order_id) values(1, 'FAIL7', 648625641486790662)
+[INFO ] 2021-09-25 20:46:43.824 [ShardingSphere-Command-3] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_7(user_id, status, order_id) values(1, 'FAIL8', 648625641486790663)
+[INFO ] 2021-09-25 20:46:43.824 [ShardingSphere-Command-3] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_8(user_id, status, order_id) values(1, 'FAIL9', 648625641486790664)
+[INFO ] 2021-09-25 20:46:43.824 [ShardingSphere-Command-3] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_9(user_id, status, order_id) values(1, 'FAIL10', 648625641486790665)
+[INFO ] 2021-09-25 20:46:43.824 [ShardingSphere-Command-3] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_10(user_id, status, order_id) values(1, 'FAIL11', 648625641486790666)
+[INFO ] 2021-09-25 20:46:43.824 [ShardingSphere-Command-3] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_11(user_id, status, order_id) values(1, 'FAIL12', 648625641486790667)
+[INFO ] 2021-09-25 20:46:43.824 [ShardingSphere-Command-3] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_12(user_id, status, order_id) values(1, 'FAIL13', 648625641486790668)
+[INFO ] 2021-09-25 20:46:43.824 [ShardingSphere-Command-3] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_13(user_id, status, order_id) values(1, 'FAIL14', 648625641486790669)
+[INFO ] 2021-09-25 20:46:43.824 [ShardingSphere-Command-3] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_14(user_id, status, order_id) values(1, 'FAIL15', 648625641486790670)
+[INFO ] 2021-09-25 20:46:43.824 [ShardingSphere-Command-3] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_15(user_id, status, order_id) values(1, 'FAIL16', 648625641486790671)
+[INFO ] 2021-09-25 20:49:36.740 [ShardingSphere-Command-4] ShardingSphere-SQL - Logic SQL: select * from t_order where user_id=1 and status='FAIL'
+[INFO ] 2021-09-25 20:49:36.740 [ShardingSphere-Command-4] ShardingSphere-SQL - SQLStatement: MySQLSelectStatement(limit=Optional.empty, lock=Optional.empty, window=Optional.empty)
+[INFO ] 2021-09-25 20:49:36.740 [ShardingSphere-Command-4] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_0 where user_id=1 and status='FAIL' ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:49:36.740 [ShardingSphere-Command-4] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_1 where user_id=1 and status='FAIL' ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:49:36.740 [ShardingSphere-Command-4] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_2 where user_id=1 and status='FAIL' ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:49:36.740 [ShardingSphere-Command-4] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_3 where user_id=1 and status='FAIL' ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:49:36.740 [ShardingSphere-Command-4] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_4 where user_id=1 and status='FAIL' ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:49:36.740 [ShardingSphere-Command-4] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_5 where user_id=1 and status='FAIL' ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:49:36.740 [ShardingSphere-Command-4] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_6 where user_id=1 and status='FAIL' ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:49:36.740 [ShardingSphere-Command-4] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_7 where user_id=1 and status='FAIL' ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:49:36.740 [ShardingSphere-Command-4] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_8 where user_id=1 and status='FAIL' ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:49:36.740 [ShardingSphere-Command-4] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_9 where user_id=1 and status='FAIL' ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:49:36.740 [ShardingSphere-Command-4] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_10 where user_id=1 and status='FAIL' ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:49:36.740 [ShardingSphere-Command-4] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_11 where user_id=1 and status='FAIL' ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:49:36.741 [ShardingSphere-Command-4] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_12 where user_id=1 and status='FAIL' ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:49:36.741 [ShardingSphere-Command-4] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_13 where user_id=1 and status='FAIL' ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:49:36.741 [ShardingSphere-Command-4] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_14 where user_id=1 and status='FAIL' ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:49:36.741 [ShardingSphere-Command-4] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_15 where user_id=1 and status='FAIL' ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:50:35.437 [ShardingSphere-Command-4] ShardingSphere-SQL - Logic SQL: select * from t_order where user_id=1 and order_id=648621847038373889
+[INFO ] 2021-09-25 20:50:35.438 [ShardingSphere-Command-4] ShardingSphere-SQL - SQLStatement: MySQLSelectStatement(limit=Optional.empty, lock=Optional.empty, window=Optional.empty)
+[INFO ] 2021-09-25 20:50:35.438 [ShardingSphere-Command-4] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_1 where user_id=1 and order_id=648621847038373889
+[INFO ] 2021-09-25 20:51:38.739 [ShardingSphere-Command-5] ShardingSphere-SQL - Logic SQL: delete from t_order where user_id=1 and order_id=648621847038373889
+[INFO ] 2021-09-25 20:51:38.740 [ShardingSphere-Command-5] ShardingSphere-SQL - SQLStatement: MySQLDeleteStatement(orderBy=Optional.empty, limit=Optional.empty)
+[INFO ] 2021-09-25 20:51:38.740 [ShardingSphere-Command-5] ShardingSphere-SQL - Actual SQL: ds_1 ::: delete from t_order_1 where user_id=1 and order_id=648621847038373889
+[INFO ] 2021-09-25 20:51:47.551 [ShardingSphere-Command-5] ShardingSphere-SQL - Logic SQL: select * from t_order
+[INFO ] 2021-09-25 20:51:47.552 [ShardingSphere-Command-5] ShardingSphere-SQL - SQLStatement: MySQLSelectStatement(limit=Optional.empty, lock=Optional.empty, window=Optional.empty)
+[INFO ] 2021-09-25 20:51:47.552 [ShardingSphere-Command-5] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_0 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:51:47.553 [ShardingSphere-Command-5] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_1 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:51:47.553 [ShardingSphere-Command-5] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_2 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:51:47.553 [ShardingSphere-Command-5] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_3 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:51:47.553 [ShardingSphere-Command-5] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_4 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:51:47.553 [ShardingSphere-Command-5] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_5 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:51:47.553 [ShardingSphere-Command-5] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_6 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:51:47.553 [ShardingSphere-Command-5] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_7 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:51:47.553 [ShardingSphere-Command-5] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_8 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:51:47.553 [ShardingSphere-Command-5] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_9 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:51:47.553 [ShardingSphere-Command-5] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_10 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:51:47.553 [ShardingSphere-Command-5] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_11 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:51:47.553 [ShardingSphere-Command-5] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_12 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:51:47.554 [ShardingSphere-Command-5] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_13 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:51:47.554 [ShardingSphere-Command-5] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_14 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:51:47.554 [ShardingSphere-Command-5] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_15 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:51:47.554 [ShardingSphere-Command-5] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_0 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:51:47.554 [ShardingSphere-Command-5] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_1 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:51:47.554 [ShardingSphere-Command-5] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_2 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:51:47.554 [ShardingSphere-Command-5] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_3 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:51:47.554 [ShardingSphere-Command-5] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_4 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:51:47.554 [ShardingSphere-Command-5] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_5 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:51:47.554 [ShardingSphere-Command-5] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_6 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:51:47.554 [ShardingSphere-Command-5] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_7 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:51:47.554 [ShardingSphere-Command-5] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_8 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:51:47.554 [ShardingSphere-Command-5] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_9 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:51:47.554 [ShardingSphere-Command-5] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_10 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:51:47.554 [ShardingSphere-Command-5] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_11 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:51:47.554 [ShardingSphere-Command-5] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_12 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:51:47.555 [ShardingSphere-Command-5] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_13 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:51:47.555 [ShardingSphere-Command-5] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_14 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:51:47.555 [ShardingSphere-Command-5] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_15 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:55:51.297 [ShardingSphere-Command-7] ShardingSphere-SQL - Logic SQL: update t_order set status='FINISH' where user_id=1 and order_id=648621847038373888
+[INFO ] 2021-09-25 20:55:51.300 [ShardingSphere-Command-7] ShardingSphere-SQL - SQLStatement: MySQLUpdateStatement(orderBy=Optional.empty, limit=Optional.empty)
+[INFO ] 2021-09-25 20:55:51.300 [ShardingSphere-Command-7] ShardingSphere-SQL - Actual SQL: ds_1 ::: update t_order_0 set status='FINISH' where user_id=1 and order_id=648621847038373888
+[INFO ] 2021-09-25 20:56:13.471 [ShardingSphere-Command-7] ShardingSphere-SQL - Logic SQL: select * from t_order
+[INFO ] 2021-09-25 20:56:13.472 [ShardingSphere-Command-7] ShardingSphere-SQL - SQLStatement: MySQLSelectStatement(limit=Optional.empty, lock=Optional.empty, window=Optional.empty)
+[INFO ] 2021-09-25 20:56:13.472 [ShardingSphere-Command-7] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_0 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:56:13.472 [ShardingSphere-Command-7] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_1 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:56:13.472 [ShardingSphere-Command-7] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_2 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:56:13.472 [ShardingSphere-Command-7] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_3 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:56:13.472 [ShardingSphere-Command-7] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_4 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:56:13.472 [ShardingSphere-Command-7] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_5 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:56:13.472 [ShardingSphere-Command-7] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_6 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:56:13.472 [ShardingSphere-Command-7] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_7 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:56:13.472 [ShardingSphere-Command-7] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_8 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:56:13.472 [ShardingSphere-Command-7] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_9 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:56:13.473 [ShardingSphere-Command-7] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_10 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:56:13.473 [ShardingSphere-Command-7] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_11 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:56:13.473 [ShardingSphere-Command-7] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_12 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:56:13.473 [ShardingSphere-Command-7] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_13 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:56:13.473 [ShardingSphere-Command-7] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_14 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:56:13.473 [ShardingSphere-Command-7] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_15 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:56:13.473 [ShardingSphere-Command-7] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_0 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:56:13.473 [ShardingSphere-Command-7] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_1 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:56:13.473 [ShardingSphere-Command-7] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_2 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:56:13.473 [ShardingSphere-Command-7] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_3 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:56:13.473 [ShardingSphere-Command-7] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_4 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:56:13.473 [ShardingSphere-Command-7] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_5 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:56:13.473 [ShardingSphere-Command-7] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_6 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:56:13.473 [ShardingSphere-Command-7] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_7 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:56:13.474 [ShardingSphere-Command-7] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_8 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:56:13.474 [ShardingSphere-Command-7] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_9 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:56:13.474 [ShardingSphere-Command-7] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_10 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:56:13.474 [ShardingSphere-Command-7] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_11 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:56:13.474 [ShardingSphere-Command-7] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_12 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:56:13.474 [ShardingSphere-Command-7] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_13 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:56:13.474 [ShardingSphere-Command-7] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_14 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:56:13.474 [ShardingSphere-Command-7] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_15 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:57:22.445 [ShardingSphere-Command-8] ShardingSphere-SQL - Logic SQL: delete from t_order
+[INFO ] 2021-09-25 20:57:22.446 [ShardingSphere-Command-8] ShardingSphere-SQL - SQLStatement: MySQLDeleteStatement(orderBy=Optional.empty, limit=Optional.empty)
+[INFO ] 2021-09-25 20:57:22.446 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: delete from t_order_0
+[INFO ] 2021-09-25 20:57:22.446 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: delete from t_order_1
+[INFO ] 2021-09-25 20:57:22.446 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: delete from t_order_2
+[INFO ] 2021-09-25 20:57:22.446 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: delete from t_order_3
+[INFO ] 2021-09-25 20:57:22.446 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: delete from t_order_4
+[INFO ] 2021-09-25 20:57:22.446 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: delete from t_order_5
+[INFO ] 2021-09-25 20:57:22.446 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: delete from t_order_6
+[INFO ] 2021-09-25 20:57:22.446 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: delete from t_order_7
+[INFO ] 2021-09-25 20:57:22.446 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: delete from t_order_8
+[INFO ] 2021-09-25 20:57:22.446 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: delete from t_order_9
+[INFO ] 2021-09-25 20:57:22.446 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: delete from t_order_10
+[INFO ] 2021-09-25 20:57:22.446 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: delete from t_order_11
+[INFO ] 2021-09-25 20:57:22.446 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: delete from t_order_12
+[INFO ] 2021-09-25 20:57:22.446 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: delete from t_order_13
+[INFO ] 2021-09-25 20:57:22.446 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: delete from t_order_14
+[INFO ] 2021-09-25 20:57:22.446 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: delete from t_order_15
+[INFO ] 2021-09-25 20:57:22.446 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: delete from t_order_0
+[INFO ] 2021-09-25 20:57:22.447 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: delete from t_order_1
+[INFO ] 2021-09-25 20:57:22.447 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: delete from t_order_2
+[INFO ] 2021-09-25 20:57:22.447 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: delete from t_order_3
+[INFO ] 2021-09-25 20:57:22.447 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: delete from t_order_4
+[INFO ] 2021-09-25 20:57:22.447 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: delete from t_order_5
+[INFO ] 2021-09-25 20:57:22.447 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: delete from t_order_6
+[INFO ] 2021-09-25 20:57:22.447 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: delete from t_order_7
+[INFO ] 2021-09-25 20:57:22.447 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: delete from t_order_8
+[INFO ] 2021-09-25 20:57:22.447 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: delete from t_order_9
+[INFO ] 2021-09-25 20:57:22.447 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: delete from t_order_10
+[INFO ] 2021-09-25 20:57:22.447 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: delete from t_order_11
+[INFO ] 2021-09-25 20:57:22.447 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: delete from t_order_12
+[INFO ] 2021-09-25 20:57:22.447 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: delete from t_order_13
+[INFO ] 2021-09-25 20:57:22.447 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: delete from t_order_14
+[INFO ] 2021-09-25 20:57:22.447 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: delete from t_order_15
+[INFO ] 2021-09-25 20:57:37.576 [ShardingSphere-Command-8] ShardingSphere-SQL - Logic SQL: select * from t_order
+[INFO ] 2021-09-25 20:57:37.576 [ShardingSphere-Command-8] ShardingSphere-SQL - SQLStatement: MySQLSelectStatement(limit=Optional.empty, lock=Optional.empty, window=Optional.empty)
+[INFO ] 2021-09-25 20:57:37.576 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_0 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:57:37.576 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_1 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:57:37.576 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_2 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:57:37.577 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_3 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:57:37.577 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_4 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:57:37.577 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_5 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:57:37.577 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_6 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:57:37.577 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_7 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:57:37.577 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_8 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:57:37.577 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_9 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:57:37.577 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_10 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:57:37.577 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_11 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:57:37.577 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_12 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:57:37.577 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_13 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:57:37.577 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_14 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:57:37.577 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_15 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:57:37.577 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_0 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:57:37.577 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_1 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:57:37.578 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_2 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:57:37.578 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_3 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:57:37.578 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_4 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:57:37.578 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_5 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:57:37.578 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_6 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:57:37.578 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_7 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:57:37.578 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_8 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:57:37.578 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_9 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:57:37.578 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_10 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:57:37.578 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_11 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:57:37.578 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_12 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:57:37.578 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_13 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:57:37.578 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_14 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:57:37.578 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_15 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 20:57:59.033 [ShardingSphere-Command-8] ShardingSphere-SQL - Logic SQL: drop table t_order
+[INFO ] 2021-09-25 20:57:59.033 [ShardingSphere-Command-8] ShardingSphere-SQL - SQLStatement: MySQLDropTableStatement(containsExistClause=false)
+[INFO ] 2021-09-25 20:57:59.033 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: drop table t_order_0
+[INFO ] 2021-09-25 20:57:59.033 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: drop table t_order_1
+[INFO ] 2021-09-25 20:57:59.033 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: drop table t_order_2
+[INFO ] 2021-09-25 20:57:59.033 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: drop table t_order_3
+[INFO ] 2021-09-25 20:57:59.033 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: drop table t_order_4
+[INFO ] 2021-09-25 20:57:59.033 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: drop table t_order_5
+[INFO ] 2021-09-25 20:57:59.033 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: drop table t_order_6
+[INFO ] 2021-09-25 20:57:59.033 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: drop table t_order_7
+[INFO ] 2021-09-25 20:57:59.033 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: drop table t_order_8
+[INFO ] 2021-09-25 20:57:59.033 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: drop table t_order_9
+[INFO ] 2021-09-25 20:57:59.033 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: drop table t_order_10
+[INFO ] 2021-09-25 20:57:59.033 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: drop table t_order_11
+[INFO ] 2021-09-25 20:57:59.033 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: drop table t_order_12
+[INFO ] 2021-09-25 20:57:59.033 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: drop table t_order_13
+[INFO ] 2021-09-25 20:57:59.033 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: drop table t_order_14
+[INFO ] 2021-09-25 20:57:59.033 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_1 ::: drop table t_order_15
+[INFO ] 2021-09-25 20:57:59.033 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: drop table t_order_0
+[INFO ] 2021-09-25 20:57:59.033 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: drop table t_order_1
+[INFO ] 2021-09-25 20:57:59.033 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: drop table t_order_2
+[INFO ] 2021-09-25 20:57:59.033 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: drop table t_order_3
+[INFO ] 2021-09-25 20:57:59.033 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: drop table t_order_4
+[INFO ] 2021-09-25 20:57:59.033 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: drop table t_order_5
+[INFO ] 2021-09-25 20:57:59.034 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: drop table t_order_6
+[INFO ] 2021-09-25 20:57:59.034 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: drop table t_order_7
+[INFO ] 2021-09-25 20:57:59.034 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: drop table t_order_8
+[INFO ] 2021-09-25 20:57:59.034 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: drop table t_order_9
+[INFO ] 2021-09-25 20:57:59.034 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: drop table t_order_10
+[INFO ] 2021-09-25 20:57:59.034 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: drop table t_order_11
+[INFO ] 2021-09-25 20:57:59.034 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: drop table t_order_12
+[INFO ] 2021-09-25 20:57:59.034 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: drop table t_order_13
+[INFO ] 2021-09-25 20:57:59.034 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: drop table t_order_14
+[INFO ] 2021-09-25 20:57:59.034 [ShardingSphere-Command-8] ShardingSphere-SQL - Actual SQL: ds_0 ::: drop table t_order_15
+[INFO ] 2021-09-25 20:59:24.662 [ShardingSphere-Command-9] ShardingSphere-SQL - Logic SQL: CREATE TABLE IF NOT EXISTS t_order (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))
+[INFO ] 2021-09-25 20:59:24.662 [ShardingSphere-Command-9] ShardingSphere-SQL - SQLStatement: MySQLCreateTableStatement(containsNotExistClause=true)
+[INFO ] 2021-09-25 20:59:24.662 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_1 ::: CREATE TABLE IF NOT EXISTS t_order_0 (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))
+[INFO ] 2021-09-25 20:59:24.663 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_1 ::: CREATE TABLE IF NOT EXISTS t_order_1 (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))
+[INFO ] 2021-09-25 20:59:24.663 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_1 ::: CREATE TABLE IF NOT EXISTS t_order_2 (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))
+[INFO ] 2021-09-25 20:59:24.663 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_1 ::: CREATE TABLE IF NOT EXISTS t_order_3 (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))
+[INFO ] 2021-09-25 20:59:24.663 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_1 ::: CREATE TABLE IF NOT EXISTS t_order_4 (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))
+[INFO ] 2021-09-25 20:59:24.663 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_1 ::: CREATE TABLE IF NOT EXISTS t_order_5 (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))
+[INFO ] 2021-09-25 20:59:24.663 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_1 ::: CREATE TABLE IF NOT EXISTS t_order_6 (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))
+[INFO ] 2021-09-25 20:59:24.663 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_1 ::: CREATE TABLE IF NOT EXISTS t_order_7 (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))
+[INFO ] 2021-09-25 20:59:24.663 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_1 ::: CREATE TABLE IF NOT EXISTS t_order_8 (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))
+[INFO ] 2021-09-25 20:59:24.663 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_1 ::: CREATE TABLE IF NOT EXISTS t_order_9 (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))
+[INFO ] 2021-09-25 20:59:24.663 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_1 ::: CREATE TABLE IF NOT EXISTS t_order_10 (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))
+[INFO ] 2021-09-25 20:59:24.663 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_1 ::: CREATE TABLE IF NOT EXISTS t_order_11 (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))
+[INFO ] 2021-09-25 20:59:24.663 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_1 ::: CREATE TABLE IF NOT EXISTS t_order_12 (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))
+[INFO ] 2021-09-25 20:59:24.663 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_1 ::: CREATE TABLE IF NOT EXISTS t_order_13 (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))
+[INFO ] 2021-09-25 20:59:24.663 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_1 ::: CREATE TABLE IF NOT EXISTS t_order_14 (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))
+[INFO ] 2021-09-25 20:59:24.663 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_1 ::: CREATE TABLE IF NOT EXISTS t_order_15 (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))
+[INFO ] 2021-09-25 20:59:24.663 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_0 ::: CREATE TABLE IF NOT EXISTS t_order_0 (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))
+[INFO ] 2021-09-25 20:59:24.663 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_0 ::: CREATE TABLE IF NOT EXISTS t_order_1 (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))
+[INFO ] 2021-09-25 20:59:24.663 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_0 ::: CREATE TABLE IF NOT EXISTS t_order_2 (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))
+[INFO ] 2021-09-25 20:59:24.663 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_0 ::: CREATE TABLE IF NOT EXISTS t_order_3 (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))
+[INFO ] 2021-09-25 20:59:24.663 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_0 ::: CREATE TABLE IF NOT EXISTS t_order_4 (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))
+[INFO ] 2021-09-25 20:59:24.664 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_0 ::: CREATE TABLE IF NOT EXISTS t_order_5 (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))
+[INFO ] 2021-09-25 20:59:24.664 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_0 ::: CREATE TABLE IF NOT EXISTS t_order_6 (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))
+[INFO ] 2021-09-25 20:59:24.664 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_0 ::: CREATE TABLE IF NOT EXISTS t_order_7 (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))
+[INFO ] 2021-09-25 20:59:24.664 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_0 ::: CREATE TABLE IF NOT EXISTS t_order_8 (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))
+[INFO ] 2021-09-25 20:59:24.664 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_0 ::: CREATE TABLE IF NOT EXISTS t_order_9 (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))
+[INFO ] 2021-09-25 20:59:24.664 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_0 ::: CREATE TABLE IF NOT EXISTS t_order_10 (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))
+[INFO ] 2021-09-25 20:59:24.664 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_0 ::: CREATE TABLE IF NOT EXISTS t_order_11 (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))
+[INFO ] 2021-09-25 20:59:24.664 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_0 ::: CREATE TABLE IF NOT EXISTS t_order_12 (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))
+[INFO ] 2021-09-25 20:59:24.664 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_0 ::: CREATE TABLE IF NOT EXISTS t_order_13 (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))
+[INFO ] 2021-09-25 20:59:24.664 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_0 ::: CREATE TABLE IF NOT EXISTS t_order_14 (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))
+[INFO ] 2021-09-25 20:59:24.664 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_0 ::: CREATE TABLE IF NOT EXISTS t_order_15 (order_id BIGINT NOT NULL AUTO_INCREMENT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_id))
+[INFO ] 2021-09-25 21:00:13.737 [ShardingSphere-Command-9] ShardingSphere-SQL - Logic SQL: select * from t_order
+[INFO ] 2021-09-25 21:00:13.738 [ShardingSphere-Command-9] ShardingSphere-SQL - SQLStatement: MySQLSelectStatement(limit=Optional.empty, lock=Optional.empty, window=Optional.empty)
+[INFO ] 2021-09-25 21:00:13.738 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_0 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:00:13.738 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_1 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:00:13.738 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_2 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:00:13.738 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_3 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:00:13.738 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_4 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:00:13.738 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_5 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:00:13.738 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_6 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:00:13.738 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_7 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:00:13.738 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_8 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:00:13.738 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_9 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:00:13.739 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_10 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:00:13.739 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_11 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:00:13.739 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_12 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:00:13.739 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_13 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:00:13.739 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_14 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:00:13.739 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_15 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:00:13.739 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_0 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:00:13.739 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_1 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:00:13.739 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_2 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:00:13.739 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_3 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:00:13.739 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_4 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:00:13.739 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_5 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:00:13.739 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_6 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:00:13.739 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_7 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:00:13.739 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_8 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:00:13.739 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_9 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:00:13.740 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_10 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:00:13.740 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_11 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:00:13.740 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_12 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:00:13.740 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_13 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:00:13.740 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_14 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:00:13.740 [ShardingSphere-Command-9] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_15 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:02:36.948 [ShardingSphere-Command-10] ShardingSphere-SQL - Logic SQL: insert into t_order(user_id, status) values(1,"FAIL1"),(1,"FAIL2"),(1,"FAIL3"),(1,"FAIL4"),(1,"FAIL5"),(1,"FAIL6"),(1,"FAIL7"),(1,"FAIL8"),(1,"FAIL9"),(1,"FAIL10"),(1,"FAIL11"),(1,"FAIL12"),(1,"FAIL13"),(1,"FAIL14"),(1,"FAIL15"),(1,"FAIL16"),(1,"FAIL17"),(1,"FAIL18"),(1,"FAIL19"),(1,"FAIL20")
+[INFO ] 2021-09-25 21:02:36.948 [ShardingSphere-Command-10] ShardingSphere-SQL - SQLStatement: MySQLInsertStatement(setAssignment=Optional.empty, onDuplicateKeyColumns=Optional.empty)
+[INFO ] 2021-09-25 21:02:36.948 [ShardingSphere-Command-10] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_1(user_id, status, order_id) values(1, 'FAIL1', 648629639207956481), (1, 'FAIL17', 648629639207956497)
+[INFO ] 2021-09-25 21:02:36.948 [ShardingSphere-Command-10] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_2(user_id, status, order_id) values(1, 'FAIL2', 648629639207956482), (1, 'FAIL18', 648629639207956498)
+[INFO ] 2021-09-25 21:02:36.948 [ShardingSphere-Command-10] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_3(user_id, status, order_id) values(1, 'FAIL3', 648629639207956483), (1, 'FAIL19', 648629639207956499)
+[INFO ] 2021-09-25 21:02:36.948 [ShardingSphere-Command-10] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_4(user_id, status, order_id) values(1, 'FAIL4', 648629639207956484), (1, 'FAIL20', 648629639207956500)
+[INFO ] 2021-09-25 21:02:36.948 [ShardingSphere-Command-10] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_5(user_id, status, order_id) values(1, 'FAIL5', 648629639207956485)
+[INFO ] 2021-09-25 21:02:36.948 [ShardingSphere-Command-10] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_6(user_id, status, order_id) values(1, 'FAIL6', 648629639207956486)
+[INFO ] 2021-09-25 21:02:36.948 [ShardingSphere-Command-10] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_7(user_id, status, order_id) values(1, 'FAIL7', 648629639207956487)
+[INFO ] 2021-09-25 21:02:36.948 [ShardingSphere-Command-10] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_8(user_id, status, order_id) values(1, 'FAIL8', 648629639207956488)
+[INFO ] 2021-09-25 21:02:36.948 [ShardingSphere-Command-10] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_9(user_id, status, order_id) values(1, 'FAIL9', 648629639207956489)
+[INFO ] 2021-09-25 21:02:36.948 [ShardingSphere-Command-10] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_10(user_id, status, order_id) values(1, 'FAIL10', 648629639207956490)
+[INFO ] 2021-09-25 21:02:36.948 [ShardingSphere-Command-10] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_11(user_id, status, order_id) values(1, 'FAIL11', 648629639207956491)
+[INFO ] 2021-09-25 21:02:36.948 [ShardingSphere-Command-10] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_12(user_id, status, order_id) values(1, 'FAIL12', 648629639207956492)
+[INFO ] 2021-09-25 21:02:36.948 [ShardingSphere-Command-10] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_13(user_id, status, order_id) values(1, 'FAIL13', 648629639207956493)
+[INFO ] 2021-09-25 21:02:36.948 [ShardingSphere-Command-10] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_14(user_id, status, order_id) values(1, 'FAIL14', 648629639207956494)
+[INFO ] 2021-09-25 21:02:36.948 [ShardingSphere-Command-10] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_15(user_id, status, order_id) values(1, 'FAIL15', 648629639207956495)
+[INFO ] 2021-09-25 21:02:36.948 [ShardingSphere-Command-10] ShardingSphere-SQL - Actual SQL: ds_1 ::: insert into t_order_0(user_id, status, order_id) values(1, 'FAIL16', 648629639207956496)
+[INFO ] 2021-09-25 21:02:38.078 [ShardingSphere-Command-10] ShardingSphere-SQL - Logic SQL: insert into t_order(user_id, status) values(2,"FAIL1"),(2,"FAIL2"),(2,"FAIL3"),(2,"FAIL4"),(2,"FAIL5"),(2,"FAIL6"),(2,"FAIL7"),(2,"FAIL8"),(2,"FAIL9"),(2,"FAIL10"),(2,"FAIL11"),(2,"FAIL12"),(2,"FAIL13"),(2,"FAIL14"),(2,"FAIL15"),(2,"FAIL16"),(2,"FAIL17"),(2,"FAIL18"),(2,"FAIL19"),(2,"FAIL20")
+[INFO ] 2021-09-25 21:02:38.078 [ShardingSphere-Command-10] ShardingSphere-SQL - SQLStatement: MySQLInsertStatement(setAssignment=Optional.empty, onDuplicateKeyColumns=Optional.empty)
+[INFO ] 2021-09-25 21:02:38.078 [ShardingSphere-Command-10] ShardingSphere-SQL - Actual SQL: ds_0 ::: insert into t_order_0(user_id, status, order_id) values(2, 'FAIL1', 648629643943325696), (2, 'FAIL17', 648629643947520016)
+[INFO ] 2021-09-25 21:02:38.078 [ShardingSphere-Command-10] ShardingSphere-SQL - Actual SQL: ds_0 ::: insert into t_order_1(user_id, status, order_id) values(2, 'FAIL2', 648629643947520001), (2, 'FAIL18', 648629643947520017)
+[INFO ] 2021-09-25 21:02:38.078 [ShardingSphere-Command-10] ShardingSphere-SQL - Actual SQL: ds_0 ::: insert into t_order_2(user_id, status, order_id) values(2, 'FAIL3', 648629643947520002), (2, 'FAIL19', 648629643947520018)
+[INFO ] 2021-09-25 21:02:38.078 [ShardingSphere-Command-10] ShardingSphere-SQL - Actual SQL: ds_0 ::: insert into t_order_3(user_id, status, order_id) values(2, 'FAIL4', 648629643947520003), (2, 'FAIL20', 648629643947520019)
+[INFO ] 2021-09-25 21:02:38.078 [ShardingSphere-Command-10] ShardingSphere-SQL - Actual SQL: ds_0 ::: insert into t_order_4(user_id, status, order_id) values(2, 'FAIL5', 648629643947520004)
+[INFO ] 2021-09-25 21:02:38.078 [ShardingSphere-Command-10] ShardingSphere-SQL - Actual SQL: ds_0 ::: insert into t_order_5(user_id, status, order_id) values(2, 'FAIL6', 648629643947520005)
+[INFO ] 2021-09-25 21:02:38.078 [ShardingSphere-Command-10] ShardingSphere-SQL - Actual SQL: ds_0 ::: insert into t_order_6(user_id, status, order_id) values(2, 'FAIL7', 648629643947520006)
+[INFO ] 2021-09-25 21:02:38.078 [ShardingSphere-Command-10] ShardingSphere-SQL - Actual SQL: ds_0 ::: insert into t_order_7(user_id, status, order_id) values(2, 'FAIL8', 648629643947520007)
+[INFO ] 2021-09-25 21:02:38.078 [ShardingSphere-Command-10] ShardingSphere-SQL - Actual SQL: ds_0 ::: insert into t_order_8(user_id, status, order_id) values(2, 'FAIL9', 648629643947520008)
+[INFO ] 2021-09-25 21:02:38.078 [ShardingSphere-Command-10] ShardingSphere-SQL - Actual SQL: ds_0 ::: insert into t_order_9(user_id, status, order_id) values(2, 'FAIL10', 648629643947520009)
+[INFO ] 2021-09-25 21:02:38.078 [ShardingSphere-Command-10] ShardingSphere-SQL - Actual SQL: ds_0 ::: insert into t_order_10(user_id, status, order_id) values(2, 'FAIL11', 648629643947520010)
+[INFO ] 2021-09-25 21:02:38.078 [ShardingSphere-Command-10] ShardingSphere-SQL - Actual SQL: ds_0 ::: insert into t_order_11(user_id, status, order_id) values(2, 'FAIL12', 648629643947520011)
+[INFO ] 2021-09-25 21:02:38.078 [ShardingSphere-Command-10] ShardingSphere-SQL - Actual SQL: ds_0 ::: insert into t_order_12(user_id, status, order_id) values(2, 'FAIL13', 648629643947520012)
+[INFO ] 2021-09-25 21:02:38.078 [ShardingSphere-Command-10] ShardingSphere-SQL - Actual SQL: ds_0 ::: insert into t_order_13(user_id, status, order_id) values(2, 'FAIL14', 648629643947520013)
+[INFO ] 2021-09-25 21:02:38.079 [ShardingSphere-Command-10] ShardingSphere-SQL - Actual SQL: ds_0 ::: insert into t_order_14(user_id, status, order_id) values(2, 'FAIL15', 648629643947520014)
+[INFO ] 2021-09-25 21:02:38.079 [ShardingSphere-Command-10] ShardingSphere-SQL - Actual SQL: ds_0 ::: insert into t_order_15(user_id, status, order_id) values(2, 'FAIL16', 648629643947520015)
+[INFO ] 2021-09-25 21:03:42.260 [ShardingSphere-Command-11] ShardingSphere-SQL - Logic SQL: select * from t_order
+[INFO ] 2021-09-25 21:03:42.261 [ShardingSphere-Command-11] ShardingSphere-SQL - SQLStatement: MySQLSelectStatement(limit=Optional.empty, lock=Optional.empty, window=Optional.empty)
+[INFO ] 2021-09-25 21:03:42.261 [ShardingSphere-Command-11] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_0 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:03:42.261 [ShardingSphere-Command-11] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_1 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:03:42.261 [ShardingSphere-Command-11] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_2 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:03:42.261 [ShardingSphere-Command-11] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_3 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:03:42.261 [ShardingSphere-Command-11] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_4 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:03:42.261 [ShardingSphere-Command-11] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_5 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:03:42.261 [ShardingSphere-Command-11] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_6 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:03:42.261 [ShardingSphere-Command-11] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_7 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:03:42.261 [ShardingSphere-Command-11] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_8 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:03:42.261 [ShardingSphere-Command-11] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_9 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:03:42.261 [ShardingSphere-Command-11] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_10 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:03:42.261 [ShardingSphere-Command-11] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_11 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:03:42.261 [ShardingSphere-Command-11] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_12 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:03:42.261 [ShardingSphere-Command-11] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_13 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:03:42.262 [ShardingSphere-Command-11] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_14 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:03:42.262 [ShardingSphere-Command-11] ShardingSphere-SQL - Actual SQL: ds_0 ::: select * from t_order_15 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:03:42.262 [ShardingSphere-Command-11] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_0 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:03:42.262 [ShardingSphere-Command-11] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_1 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:03:42.262 [ShardingSphere-Command-11] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_2 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:03:42.262 [ShardingSphere-Command-11] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_3 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:03:42.262 [ShardingSphere-Command-11] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_4 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:03:42.262 [ShardingSphere-Command-11] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_5 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:03:42.262 [ShardingSphere-Command-11] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_6 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:03:42.262 [ShardingSphere-Command-11] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_7 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:03:42.262 [ShardingSphere-Command-11] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_8 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:03:42.262 [ShardingSphere-Command-11] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_9 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:03:42.262 [ShardingSphere-Command-11] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_10 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:03:42.262 [ShardingSphere-Command-11] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_11 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:03:42.262 [ShardingSphere-Command-11] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_12 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:03:42.262 [ShardingSphere-Command-11] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_13 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:03:42.262 [ShardingSphere-Command-11] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_14 ORDER BY order_id ASC 
+[INFO ] 2021-09-25 21:03:42.262 [ShardingSphere-Command-11] ShardingSphere-SQL - Actual SQL: ds_1 ::: select * from t_order_15 ORDER BY order_id ASC 
