@@ -38,6 +38,37 @@
 
 > 基于 hmily TCC 实现一个简单的分布式事务应用 demo
 >
+> 1.基于springcloud的demo
+>
+> https://github.com/piercebn/JavaCourse/blob/main/06db/hmily-springcloud-demo
+>
+> 1.1初始化数据库
+>
+> https://github.com/piercebn/JavaCourse/blob/main/06db/hmily-springcloud-demo/sql/init.sql
+>
+> 1.2启动服务
+>
+> ```
+> run Bank2ServerApplication
+> run Bank1ServerApplication
+> run EurakeServerApplication
+> ```
+>
+> 1.3测试接口
+>
+> ```
+> http://127.0.0.1:8884/swagger-ui.html#!/account-controller/transferUsingPOST
+> 1.用户（bn）存在，正常转账（150，Bank1->Bank2）
+> http://127.0.0.1:8884/bank1/transfer?name=bn&amout=150
+> 2.用户（abc）不存存在，扣减Bank1（150）失败
+> http://127.0.0.1:8884/bank1/transfer?name=abc&amout=150
+> 3.用户（bn）存在，增加Bank2（600）大于500失败
+> http://127.0.0.1:8884/bank1/transfer?name=bn&amout=600
+> 4.用户（bn）存在，增加Bank2（450）大于400超时失败
+> http://127.0.0.1:8884/bank1/transfer?name=bn&amout=450
+> 问题：Bank2处理超时，Bank1正常cancel，Bank2的try处理完后，后续没有自动cancel补偿处理
+> ```
+>
 > 
 
 
