@@ -4,6 +4,10 @@ package io.kimmking.rpcfx.client;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.parser.ParserConfig;
 import io.kimmking.rpcfx.api.*;
+import net.bytebuddy.ByteBuddy;
+import net.bytebuddy.dynamic.loading.ClassLoadingStrategy;
+import net.bytebuddy.implementation.MethodDelegation;
+import net.bytebuddy.matcher.ElementMatchers;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -15,8 +19,14 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public final class Rpcfx {
+
+    protected static final Map<Class<?>, String> URL_MAP = new ConcurrentHashMap<>();
+
+    protected static final Map<Class<?>, Object> INSTANCW_MAP = new ConcurrentHashMap<>();
 
     static {
         ParserConfig.getGlobalInstance().addAccept("io.kimmking");
@@ -42,7 +52,27 @@ public final class Rpcfx {
     public static <T> T create(final Class<T> serviceClass, final String url, Filter... filters) {
 
         // 0. 替换动态代理 -> 字节码生成
-        return (T) Proxy.newProxyInstance(Rpcfx.class.getClassLoader(), new Class[]{serviceClass}, new RpcfxInvocationHandler(serviceClass, url, filters));
+//        return (T) Proxy.newProxyInstance(Rpcfx.class.getClassLoader(), new Class[]{serviceClass}, new RpcfxInvocationHandler(serviceClass, url, filters));
+
+        // 0. 字节码增强方式
+        URL_MAP.putIfAbsent(serviceClass, url);
+        T proxyObj = (T) INSTANCW_MAP.get(serviceClass);
+        if (proxyObj == null) {
+            try {
+                proxyObj = new ByteBuddy().subclass(serviceClass)
+                        .method(ElementMatchers.anyOf(serviceClass.getMethods()))
+                        .intercept(MethodDelegation.to(new RpcAdvice()))
+                        .make()
+                        .load(serviceClass.getClassLoader(), ClassLoadingStrategy.Default.WRAPPER)
+                        .getLoaded()
+                        .newInstance();
+            } catch (InstantiationException | IllegalAccessException e) {
+                e.printStackTrace();
+            }
+            INSTANCW_MAP.putIfAbsent(serviceClass, proxyObj);
+        }
+
+        return proxyObj;
 
     }
 
