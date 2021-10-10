@@ -26,6 +26,33 @@
 
 ### 作业7
 
+> 结合 dubbo+hmily，实现一个 TCC 外汇交易处理
+>
+> https://github.com/piercebn/JavaCourse/tree/main/07rpc/foreign-exchange
+>
+> 1初始化数据库
+>
+> 为用户A创建A库，为用户B创建B库，并分别创建账户表和冻结资产表
+>
+> https://github.com/piercebn/JavaCourse/blob/main/07rpc/foreign-exchange/sql/init.sql
+>
+> 2启动服务
+>
+> ```
+> 启动ZooKeeper
+> run BankAApp
+> run BankBApp
+> ```
+>
+> 3测试接口
+>
+> ```
+> http://localhost:8761/swagger-ui.html#!/account-controller/transferNestUsingPOST
+> 用户A在BankA，汇出美元账户100美元，汇入人民币账户700人民币，用户B在BankB，汇出人民币账户700人民币，汇入美元账户100美元
+> http://localhost:8761/bank1/transfer
+> ```
+>
+
 
 
 
