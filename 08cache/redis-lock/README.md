@@ -26,25 +26,72 @@ public class RedisLock {
 
     /**
      * 进行加锁
-     * @param lockValue
-     * @param seconds
-     * @return
+     * @param lockKey lock key
+     * @param lockValue lock value
+     * @param seconds expire time
+     * @return get lock
      */
-    public boolean lock(String lockValue, int seconds) {
+    public boolean lock(String lockKey, String lockValue, int seconds) {
         try(Jedis jedis = jedisPool.getResource()) {
-            return "OK".equals(jedis.set(lockValue, lockValue, "NX", "EX", seconds));
+            return "OK".equals(jedis.set(lockKey, lockValue, "NX", "EX", seconds));
         }
     }
 
     /**
      * 释放锁
-     * @param lock
-     * @return
+     * @param lockKey lock key
+     * @param lockValue lock value
+     * @return release lock
      */
-    public boolean release(String lock) {
+    public boolean release(String lockKey, String lockValue) {
         String luaScript = "if redis.call('get',KEYS[1]) == ARGV[1] then " + "return redis.call('del',KEYS[1]) else return 0 end";
         try(Jedis jedis = jedisPool.getResource()) {
-            return jedis.eval(luaScript, Collections.singletonList(lock), Collections.singletonList(lock)).equals(1L);
+            return jedis.eval(luaScript, Collections.singletonList(lockKey), Collections.singletonList(lockValue)).equals(1L);
+        }
+    }
+}
+```
+### Redis分布式计数器
+- 减库存：使用decr进行库存扣减
+
+&ensp;&ensp;&ensp;&ensp;大致代码如下：
+
+```java
+public class RedisInvertory {
+
+    private JedisPool jedisPool = new JedisPool();
+
+    /**
+     * 初始化库存
+     * @param key
+     * @param amount
+     * @return
+     */
+    public boolean init(String key, int amount) {
+        try(Jedis jedis = jedisPool.getResource()) {
+            return "OK".equals(jedis.set(key, Integer.toString(amount)));
+        }
+    }
+
+    /**
+     * 减库存
+     * @param key
+     * @return
+     */
+    public boolean reduce(String key) {
+        try(Jedis jedis = jedisPool.getResource()) {
+            return "OK".equals(jedis.decr(key));
+        }
+    }
+
+    /**
+     * 获取库存
+     * @param key
+     * @return
+     */
+    public int get(String key) {
+        try(Jedis jedis = jedisPool.getResource()) {
+            return Integer.valueOf(jedis.get(key));
         }
     }
 }

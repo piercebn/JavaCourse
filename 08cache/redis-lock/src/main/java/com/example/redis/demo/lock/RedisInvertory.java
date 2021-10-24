@@ -23,7 +23,7 @@ import redis.clients.jedis.JedisPool;
 import java.util.Collections;
 
 /**
- * Redis 分布式锁
+ * Redis 分布式计数器
  *
  */
 public class RedisInvertory {
