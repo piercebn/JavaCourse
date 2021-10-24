@@ -13,13 +13,17 @@
 
 ### 作业8
 
-
+> 基于Redis封装分布式数据操作，实现分布式锁和分布式计数器
+>
+> https://github.com/piercebn/JavaCourse/tree/main/08cache/redis-lock
 
 
 
 ### 作业9
 
-
+> 基于Redis的PubSub实现订单异步处理
+>
+> https://github.com/piercebn/JavaCourse/tree/main/08cache/redis-pubsub
 
 
 
